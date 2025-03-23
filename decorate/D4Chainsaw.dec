@@ -56,13 +56,13 @@ Tag "$TAG_CHAINSAW"
 		TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"NoAltMode")
 		TNT1 A 0 A_JumpIfInventory("SawGas",1,1)
 		Goto NotReady
-		PS4W AB 1 A_WeaponReady
+		PS4W ABAB 2 A_WeaponReady
 		TNT1 A 0 A_PlaySound("Painsaw/Idle",CHAN_6,1,TRUE)
-		PS4W AB 1 A_WeaponReady
+		PS4W ABAB 2 A_WeaponReady
 		TNT1 A 0 A_PlaySound("Painsaw/Idle",CHAN_6,1,TRUE)
-		PS4W AB 1 A_WeaponReady
+		PS4W ABAB 2 A_WeaponReady
 		TNT1 A 0 A_PlaySound("Painsaw/Idle",CHAN_6,1,TRUE)
-		PS4W AB 1 A_WeaponReady
+		PS4W ABAB 2 A_WeaponReady
 		TNT1 A 0 A_PlaySound("Painsaw/Idle",CHAN_6,1,TRUE)
 		TNT1 A 0 A_TakeInventory("SawGas",1)
 		Loop
