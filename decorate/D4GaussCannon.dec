@@ -12,149 +12,69 @@ Tag "Gauss Cannon"
 +inventory.ignoreskill
 +WEAPON.NOAUTOFIRE
 	States
-	{
+	{	
 	Spawn:
 		D4W7 B -1
 		Stop
-	KickingFlash:
-		GCAS CBA 1
-		GCAS A 10
-		GCAS ABC 1
-		Stop
-	AirKickingFlash:
-		GCAS CBA 1
-		GCAS A 12
-		GCAS ABC 1
-		Stop
-	SlideKickingStart:
-		GCAS CBA 1
-		GCAS A 19
-	SlideKickingEnd:
-		GCAS A 7
-		GCAS ABC 1
-		Stop
 	v1Ready:
 	Ready:
-		GCAG A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"ChangeAltMode")
+		GA2G A 0 A_JumpIfInventory("SiegeMode",1,3)
+		GA1G A 0 A_JumpIfInventory("PreciseMode",1,2)
+		GAUG A 0
+		"####" A 1 A_WeaponReady
+		//TNT1 A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
+		"####" A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		//TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"ChangeAltMode")
 		Loop
-	ChangeAltMode:
-		GCAG A 1
-		TNT1 A 0 A_TakeInventory("WeaponAltMode",1)
-		TNT1 A 0 A_JumpIfInventory("GaussUpgrade",1,1)
-		Goto NoUpgrades
-		GCAG A 1
-		TNT1 A 0 A_JumpIfInventory("GaussUpgrade",2,1)
-		Goto NoUpgrades2
-		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"ChangeAltMode2")
-		TNT1 A 0 A_GiveInventory("D4AltMode",1)
-		TNT1 A 0 A_Print("Railgun Mode Selected",2)
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Electricity",6)
-		GCAF AB 2 Bright
-		TNT1 A 0 A_PlaySound("D4GaussCannon/ModSwitch",CHAN_WEAPON)
-		GCAF CB 2 Bright
-		TNT1 A 0 A_StopSound(6)
-		Goto Ready
-	ChangeAltMode2:
-		GCAG A 1
-		TNT1 A 0 A_TakeInventory("D4AltMode",1)
-		TNT1 A 0 A_Print("Gauss Bomb mode Selected",2)
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Electricity",6)
-		GCAF AB 2 Bright
-		TNT1 A 0 A_PlaySound("D4GaussCannon/ModSwitch",CHAN_WEAPON)
-		GCAF CB 2 Bright
-		TNT1 A 0 A_StopSound(6)
-		Goto Ready
 	Deselect:
-		GCAS CBA 1
 		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
 		TNT1 A 0 A_TakeInventory("D4GaussSelected",0)
 		TNT1 A 0 A_TakeInventory("D4AltMode",0)
-		TNT1 A 0 A_Lower
+		GA2G A 0 A_JumpIfInventory("SiegeMode",1,3)
+		GA1G A 0 A_JumpIfInventory("PreciseMode",1,2)
+		GAUG A 0
+		"####" A 1 Offset(-8, 37)
+		"####" A 1 Offset(-20, 43)
+		"####" A 1 Offset(-45, 55)
+		"####" A 1 Offset(-70, 68)		
+		"####" A 0 A_Lower
 		Wait
 	Select:
 		TNT1 A 0 A_GiveInventory("D4GaussSelected",1)
 		TNT1 A 0 A_GiveInventory("IsD4Weapon",1)
-		GCAS ABC 1 Offset(0,32)
-		TNT1 A 0 A_Raise
+		GA2G A 0 A_JumpIfInventory("SiegeMode",1,3)
+		GA1G A 0 A_JumpIfInventory("PreciseMode",1,2)
+		GAUG A 0
+		"####" A 1 Offset(75, 75)
+		"####" A 1 Offset(50, 60)
+		"####" A 1 Offset(28, 45)
+		"####" A 1 Offset(10, 34)		
+		"####" A 0 Offset(0,32) A_Raise
 		Wait
 	Fire:
 		TNT1 A 0 A_PlaySound("D4GaussCannon/Electricity",6)
-		GCAF ABCD 1 BRIGHT
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Fire",1)
-		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
-		TNT1 A 0 A_Jump(256,2)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
-		TNT1 A 0 A_FireCustomMissile("GaussCannonShot",0,1,6,-3,0,0)
-		GCAF E 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		GCAF F 1 BRIGHT
-		TNT1 A 0 A_StopSound(6)
-		GCAF GHIJ 1 A_SetAngle(random(1,-1) + angle)
-		GCAG A 15
-		Goto Ready
-	AltFire:
-		TNT1 A 0 A_JumpIfInventory("GaussUpgrade",1,1)
-		Goto NoUpgrades
-		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"AltFire2")
-		TNT1 A 0 A_JumpIfInventory("cell",15,1)
-		Goto NoAmmo
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Charge",7)
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Electricity",6)
-		GCAF ABABAB 1 BRIGHT
-		GCAF CDCDCD 1 BRIGHT
-		TNT1 A 0 A_PlaySound("D4GaussCannon/AltFire",1)
-		TNT1 A 0 A_TakeInventory("cell",15)
-		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
-		TNT1 A 0 A_Jump(256,2)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
-		TNT1 A 0 A_FireCustomMissile("GaussBomb",0,1,6,-3,0,0)
-		GCAF E 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		GCAF F 1 BRIGHT
-		TNT1 A 0 A_StopSound(6)
-		GCAF GGGG 1 A_SetAngle(random(1,-1) + angle)
-		GCAF GHIJ 1
-		GCAG A 5
-		Goto Ready
-	AltFire2:
-		TNT1 A 0 A_JumpIfInventory("cell",10,1)
-		Goto NoAmmo
-		TNT1 A 0 A_PlaySound("D4GaussCannon/Electricity",6)
-		GCAF ABCD 1 BRIGHT
-		TNT1 A 0 A_PlaySound("D4GaussCannon/RailFire",CHAN_WEAPON)
-		TNT1 A 0 A_TakeInventory("cell",10)
-		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
-		TNT1 A 0 A_Jump(256,2)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
-		TNT1 A 0 A_RailAttack(160,8,0,None,None,RGF_FULLBRIGHT|RGF_SILENT,0,"GaussCannonProjectilePuff",0,0,0,35,5,0,"GaussCannonProjectileTrail",-5)
-		GCAF E 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		GCAF F 1 BRIGHT
-		TNT1 A 0 A_StopSound(6)
-		GCAF GHIJ 1 A_SetAngle(random(1,-1) + angle)
-		GCAG A 15
-		Goto Ready
-	NoUpgrades:
-		TNT1 A 0 A_Print("You have no upgrades for this weapon",2)
-		Goto Ready
-	NoUpgrades2:
-		TNT1 A 0 A_Print("You don't have a level 2 upgrade for this weapon",2)
+		GA2F A 0 A_JumpIfInventory("SiegeMode",1,3)
+		GA1F A 0 A_JumpIfInventory("PreciseMode",1,2)
+		GAUF A 0
+		"####" ABCD 1 BRIGHT
+		"####" A 0 A_PlaySound("D4GaussCannon/Fire",1)
+		"####" A 0 A_JumpIfInventory("IsCrouching",1,3)
+		"####" A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
+		"####" A 0 A_Jump(256,2)
+		"####" A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
+		"####" A 0 A_RailAttack(250,2,1,None,None,RGF_FULLBRIGHT|RGF_SILENT,0,"GaussCannonProjectilePuff",0,0,0,0,5,0,"GaussCannonProjectileTrail",-5)
+		"####" E 1 BRIGHT A_SetAngle(random(4,-4) + angle)
+		"####" F 1 BRIGHT
+		"####" A 0 A_StopSound(6)
+		"####" GGGGGHIJKL 1 A_SetAngle(random(1,-1) + angle)
+		GA2G A 0 A_JumpIfInventory("SiegeMode",1,3)
+		GA1G A 0 A_JumpIfInventory("PreciseMode",1,2)
+		GAUG A 0
+		"####" A 15
 		Goto Ready
 	NoAmmo:
 		TNT1 A 0 A_Print("You don't have enough ammo to use this weapon's alt fire",2)
 		Goto Ready
-	UpgradeWeapons:
-		TNT1 A 0 A_TakeInventory("IsUpgradingWeapons",1)
-		TNT1 A 0 SetPlayerProperty(0,1,4)
-		PK4P ABCDEFGH 2
-		TNT1 A 6
-		TNT1 A 0 A_PlaySound("UACBot/Pickup")
-		TNT1 A 0 SetPlayerProperty(0,0,4)
-		TNT1 A 12
-		Goto Select
 	}
 }
 
