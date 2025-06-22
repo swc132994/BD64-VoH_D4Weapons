@@ -100,8 +100,7 @@ Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecia
 		UABB A 1 BRIGHT Light("HealthPotion")
 		TNT1 A 0 A_JumpIfInTargetInventory("ChainGunUpgrade",2,"MaxUpgrade")
 		TNT1 A 0 A_GiveToTarget("ChainGunUpgrade",1)
-		Goto FinishUpgrade
-		
+		Goto FinishUpgrade		
 	UpgradeRocketLauncher:
 		UABB A 1 BRIGHT Light("HealthPotion")
 		TNT1 A 0 A_JumpIfInTargetInventory("RocketLauncherUpgrade",2,"MaxUpgrade")
@@ -114,13 +113,16 @@ Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecia
 		Goto FinishUpgrade
 	UpgradeGauss:
 		UABB A 1 BRIGHT Light("HealthPotion")
-		TNT1 A 0 A_JumpIfInTargetInventory("GaussUpgrade",2,"MaxUpgrade")
-		TNT1 A 0 A_GiveToTarget("GaussUpgrade",1)
-		Goto FinishUpgrade
-	UpgradeBFG:
-		UABB A 1 BRIGHT Light("HealthPotion")
-		TNT1 A 0 A_JumpIfInTargetInventory("BFGUpgrade",2,"MaxUpgrade")
-		TNT1 A 0 A_GiveToTarget("BFGUpgrade",1)
+		TNT1 A 0 A_Jump(128,"GetPrecise")
+	GetSiege:	
+		TNT1 A 0 A_JumpIfInTargetInventory("SiegeMode",1,"UpgradePeaGun")
+		//TNT1 A 0 A_GiveToTarget("SiegeMode",1)
+		TNT1 A 0 A_Log("You have selected an upgrade for Gauss Cannon: Siege Mode")
+		Goto FinishUpgrade		
+	GetPrecise:	
+		TNT1 A 0 A_JumpIfInTargetInventory("PreciseMode",1,"UpgradePeaGun")
+		TNT1 A 0 A_GiveToTarget("PreciseMode",1)
+		TNT1 A 0 A_Log("You have selected an upgrade for Gauss Cannon: Precise Mode")
 		Goto FinishUpgrade
 	FinishUpgrade:	
 		TNT1 A 0 A_GiveToTarget("IsUpgradingWeapons",1)

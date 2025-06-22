@@ -93,6 +93,66 @@ Sprite "GA2FG0", 512, 128
 
 Sprite "GA2FH0", 512, 128
 {
+	XScale 0.850
+	YScale 0.850
+	Offset 123, -40
+	Patch "GAUSS24", 0, 0
+	Patch "GSLIGHT", 335, 78
+	{
+		Style Translucent
+	}
+}
+
+Sprite "GA2FI0", 512, 128
+{
+	XScale 0.840
+	YScale 0.840
+	Offset 123, -40
+	Patch "GAUSS24", 0, 0
+	Patch "GSLIGHT", 335, 78
+	{
+		Style Translucent
+	}
+}
+
+Sprite "GA2FJ0", 512, 128
+{
+	XScale 0.840
+	YScale 0.840
+	Offset 123, -40
+	Patch "GAUSS24", 0, 0
+	Patch "GSLIGHT", 335, 78
+	{
+		Style Translucent
+	}
+}
+
+Sprite "GA2FK0", 512, 128
+{
+	XScale 0.825
+	YScale 0.825
+	Offset 123, -40
+	Patch "GAUSS24", 0, 0
+	Patch "GSLIGHT", 335, 78
+	{
+		Style Translucent
+	}
+}
+
+Sprite "GA2FL0", 512, 128
+{
+	XScale 0.895
+	YScale 0.895
+	Offset 123, -40
+	Patch "GAUSS24", 0, 0
+	Patch "GSLIGHT", 335, 78
+	{
+		Style Translucent
+	}
+}
+
+Sprite "GA2FM0", 512, 128
+{
 	XScale 0.915
 	YScale 0.915
 	Offset 123, -40
@@ -103,7 +163,7 @@ Sprite "GA2FH0", 512, 128
 	}
 }
 
-Sprite "GA2FI0", 512, 128
+Sprite "GA2FN0", 512, 128
 {
 	XScale 0.945
 	YScale 0.945
@@ -116,7 +176,7 @@ Sprite "GA2FI0", 512, 128
 	}
 }
 
-Sprite "GA2FJ0", 512, 128
+Sprite "GA2FO0", 512, 128
 {
 	XScale 0.970
 	YScale 0.970
@@ -129,7 +189,7 @@ Sprite "GA2FJ0", 512, 128
 	}
 }
 
-Sprite "GA2FK0", 512, 128
+Sprite "GA2FP0", 512, 128
 {
 	XScale 0.985
 	YScale 0.985
@@ -142,7 +202,7 @@ Sprite "GA2FK0", 512, 128
 	}
 }
 
-Sprite "GA2FL0", 512, 128
+Sprite "GA2FO0", 512, 128
 {
 	XScale 0.995
 	YScale 0.995

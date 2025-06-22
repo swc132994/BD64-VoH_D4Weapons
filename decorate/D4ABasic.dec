@@ -141,16 +141,37 @@ Actor SSGDoubleTrouble : WeaponUpgrade {}
 Actor SSGPreciseShot : WeaponUpgrade {}
 Actor SSGCounter : WeaponUpgrade { Inventory.MaxAmount 2 }
 
-Actor Cooldown : Inventory
+Actor BurstFireCooldownActivator : PowerupGiver
 {
-	Inventory.Amount 100
-	Inventory.MaxAmount 100
-	+UNDROPPABLE
+	+INVENTORY.BIGPOWERUP
+	+INVENTORY.ALWAYSPICKUP
+	+COUNTITEM
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_GiveInventory("BurstFireCooldown", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("ShotgunCooldownCheck")		
+		Stop
+	}
 }
 
-Actor ExplosiveCooldown : Cooldown { }
+Actor ExplosiveCooldownActivator : BurstFireCooldownActivator 
+{
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_GiveInventory("ExplosiveCooldown", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("ShotgunCooldownCheck")
+		Stop
+	}
+}
 
-Actor BurstFireCooldown : Cooldown { }
+Actor BurstFireCooldown : PowerFrightener
+{
+	Powerup.Duration -1000
+}
+
+Actor ExplosiveCooldown : BurstFireCooldown {}
 
 Actor PistolCharging : Ammo
 {
@@ -224,21 +245,18 @@ Ammo.BackpackMaxAmount 2
 	}
 }
 
-ACTOR GaussUpgrade : Ammo
+//Gauss Cannon
+Actor SiegeMode : WeaponUpgrade {}
+Actor PreciseMode : SiegeMode {}
+
+Actor SiegeGauss : SiegeMode {}
+Actor PreciseGauss : PreciseMode {}
+
+Actor PreciseCharger : Ammo
 {
-Game Doom
-Inventory.PickupMessage "Picked up a Gauss Gung Upgrade."
-Inventory.Amount 1
-Inventory.MaxAmount 2
-Ammo.BackpackAmount 0
-Ammo.BackpackMaxAmount 2
-//Inventory.Icon "CELPA0"
-	States
-	{
-	Spawn:
-		CELP A -1
-		Stop
-	}
+	Inventory.Amount 50
+	Inventory.MaxAmount 50
+	+UNDROPPABLE
 }
 
 ACTOR BFGUpgrade : Ammo
@@ -335,7 +353,4 @@ Actor D4GaussSelected : IsD4Weapon {}
 
 Actor D4BFGSelected : IsD4Weapon {}
 
-Actor IsUpgradingWeapons : Inventory
-{
-inventory.maxamount 1
-}
+Actor IsUpgradingWeapons : IsD4Weapon {}

@@ -1,32 +1,16 @@
-Script "BurstFireShotgunStartCooldown" (void)
+script "ShotgunCooldownCheck" (void)
 {
-	GiveInventory("BurstFireCooldown",25);
-	TakeInventory("BurstFireActivated",1);
-	
-	ACS_NamedExecute("ShotgunUpgradeCooldown",0,0,0,0);
-}
-
-Script "ExplosiveShotgunStartCooldown" (void)
-{
-	GiveInventory("ExplosiveCooldown",50);
-	TakeInventory("ExplosiveActivated",1);
-	
-	ACS_NamedExecute("ShotgunUpgradeCooldown",0,0,0,0);
-}
-
-Script "ShotgunUpgradeCooldown" (void)
-{
-	if(CheckInventory("BurstFireCooldown"))
+	If(CheckInventory("BurstFireCooldownActivator"))
 	{
-	Delay(25);
-	TakeInventory("BurstFireCooldown",1);
+	delay(1000);
+	TakeInventory("BurstFireCooldownActivator",1);
+	}
+	else If(CheckInventory("ExplosiveCooldownActivator"))
+	{
+	delay(1000);
+	TakeInventory("ExplosiveCooldownActivator",1);	
 	}
 
-	if(CheckInventory("ExplosiveCooldown"))
-	{
-	delay(25);
-	TakeInventory("ExplosiveCooldown",1);
-	}
 }
 
 script "SSGFireUpgradeCheck" (void)
@@ -43,12 +27,15 @@ script "SSGFireUpgradeCheck" (void)
 	}	
 }
 
+<<<<<<< Updated upstream:acs/WeapFunc.acs
 Script "GaussPreciseModeActive" (void)
 {
 	SetFont("");
 //	HudMessage("a",0,0,0,0,0,0);
 }
 
+=======
+>>>>>>> Stashed changes:src/WeapFunc.acs
 Script "NoUpgradedWeapons" (int Weapon)
 {
 	static str NoAltModeWeapon[6] = { "the Chainsaw", "the Energy Pistol", "the Repeater", "the Lightning Gun", "this thing...", "the STG-46" };

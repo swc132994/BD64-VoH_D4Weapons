@@ -47,7 +47,8 @@ Skill HardPlus
 	MonsterHealth = 1.0
 	Name = "Watch me die+!"
 	FastMonsters
-	SpawnMulti //This command works correctly in GZDoom, but has no effect on Zandronum
+	SpawnMulti //This command works correctly in GZDoom, but has no effect on Zandronum because his used multiplayer emulation
+	ACSReturn = 33 //Zandronum multiplayer emulation
 	mustconfirm = "Equivalent to Ultra Violence+, Fast Monsters, (GZDoom only) Spawn Multiplayer weapons"
 }
 

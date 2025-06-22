@@ -1,0 +1,50 @@
+appendstatusbar Normal, forcescaled
+{
+	InInventory MicroMissilesActive,1
+	{
+		InInventory MicroMissilesAmmo, 6
+		{ drawimage "HAR_IP6", 95,13; }
+		else InInventory MicroMissilesAmmo, 5
+		{ drawimage "HAR_IP5", 95,13; }
+		else InInventory MicroMissilesAmmo, 4
+		{ drawimage "HAR_IP4", 95,13; }
+		else InInventory MicroMissilesAmmo, 3
+		{ drawimage "HAR_IP3", 95,13; }
+		else InInventory MicroMissilesAmmo, 2
+		{ drawimage "HAR_IP2", 95,13; }
+		else InInventory MicroMissilesAmmo, 1
+		{ drawimage "HAR_IP1", 95,13; }	
+		else drawimage "HAR_IP0", 95,13;
+	}
+}
+
+appendstatusbar fullscreen, forcescaled
+{
+	IsSelected D4GaussCannon
+	{
+		InInventory Zoomed,1
+		{
+		drawbar "GAUSCOP2","GAUSCOP1", Ammo PreciseCharger,vertical,interpolate(15),72,63;
+		}
+	}
+
+	IsSelected D4Machinegun
+	{
+		InInventory MicroMissilesActive,1
+		{
+			InInventory MicroMissilesAmmo, 6
+			{ drawimage "HAR_IP6", 95,33; }
+			else InInventory MicroMissilesAmmo, 5
+			{ drawimage "HAR_IP5", 95,33; }
+			else InInventory MicroMissilesAmmo, 4
+			{ drawimage "HAR_IP4", 95,33; }
+			else InInventory MicroMissilesAmmo, 3
+			{ drawimage "HAR_IP3", 95,33; }
+			else InInventory MicroMissilesAmmo, 2
+			{ drawimage "HAR_IP2", 95,33; }
+			else InInventory MicroMissilesAmmo, 1
+			{ drawimage "HAR_IP1", 95,33; }	
+			else drawimage "HAR_IP0", 95,33;
+		}
+	}	
+}
