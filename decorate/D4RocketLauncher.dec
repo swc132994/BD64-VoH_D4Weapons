@@ -498,6 +498,7 @@ Species "Marines"
 -THRUGHOST
 +SEEKERMISSILE
 -thruactors
+-SHOOTABLE
 	States
 	{
 	Spawn:

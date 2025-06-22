@@ -6,19 +6,17 @@ Script "WeapomnAltModeKeyACS" (VOID) NET			//TRIGGERED FROM KEYPRESS
 GiveInventory("WeaponAltMode",1);
 }
 
-Script "NuDoomUnmakerChecker" (void)		//checks if you have unmaker to allow spawn of soul ammo
+Script "NuDoomUnmakerChecker" (void)
 {
-	for(int i = 2337; i < 2400; i++)
+	for(int i = 6666; i < 6766; i++)
 	{
-		if(CheckActorInventory(i,"D4Unmaker") && CheckActorInventory(i,"WpnPower1Icon") && CheckActorInventory(i,"WpnPower2Icon") && CheckActorInventory(i,"WpnPower3Icon"))		//Checks if you have unmaker & demon keys
-		{
-			SetResultValue(3);
-			break;
-		}
-		if(CheckActorInventory(i,"D4Unmaker"))
+		if(CheckActorInventory(i,"D4Unmaker"))	//checks if you have unmaker
 		{
 			SetResultValue(2);
-			break;
+			if(CheckActorInventory(i,"WpnPower1Icon") && CheckActorInventory(i,"WpnPower2Icon") && CheckActorInventory(i,"WpnPower3Icon"))	//checks if you have all 3 demon keys
+			{
+			SetResultValue(3);
+			}
 		}
 	}
 }
