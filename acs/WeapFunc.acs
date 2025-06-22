@@ -46,7 +46,7 @@ script "SSGFireUpgradeCheck" (void)
 Script "GaussPreciseModeActive" (void)
 {
 	SetFont("");
-	HudMessage("a",0,0,0,0,0,0);
+//	HudMessage("a",0,0,0,0,0,0);
 }
 
 Script "NoUpgradedWeapons" (int Weapon)
@@ -63,19 +63,17 @@ Script "NoUpgradedWeapons" (int Weapon)
 	}
 }
 
-Script "NuDoomUnmakerChecker" (void)		//checks if you have unmaker to allow spawn of soul ammo
+Script "NuDoomUnmakerChecker" (void)
 {
-	for(int i = 2337; i < 2400; i++)
+	for(int i = 6666; i < 6766; i++)
 	{
-		if(CheckActorInventory(i,"D4Unmaker") && CheckActorInventory(i,"WpnPower1Icon") && CheckActorInventory(i,"WpnPower2Icon") && CheckActorInventory(i,"WpnPower3Icon"))		//Checks if you have unmaker & demon keys
-		{
-			SetResultValue(3);
-			break;
-		}
-		if(CheckActorInventory(i,"D4Unmaker"))
+		if(CheckActorInventory(i,"D4Unmaker"))	//checks if you have unmaker or ruiner
 		{
 			SetResultValue(2);
-			break;
+			if(CheckActorInventory(i,"WpnPower1Icon") && CheckActorInventory(i,"WpnPower2Icon") && CheckActorInventory(i,"WpnPower3Icon"))	//checks if you have all 3 demon keys
+			{
+			SetResultValue(3);
+			}
 		}
 	}
 }

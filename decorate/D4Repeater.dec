@@ -9,9 +9,6 @@ Inventory.PickupSound "Repeater/Pickup"
 Inventory.PickupMessage "You got the Repeater Rifle!"
 Obituary "%o was picked off by %k's rifle."
 Tag "Repeater Rifle"
-+INVENTORY.RESTRICTABSOLUTELY
-+inventory.IGNORESKILL
-+WEAPON.NOAUTOFIRE
 	States
 	{
 	Spawn:
@@ -60,8 +57,9 @@ Tag "Repeater Rifle"
 		TNT1 A 0 Offset(0,32) A_Raise
 		Wait
 	Fire:
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-1,1),1,12,-6,0,random(-1,1))
-		TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,1,10,-12)
+		TNT1 A 0 A_FireCustomMissile("Tracer",random(-1,1),FALSE,12,-6,0,random(-1,1))
+		TNT1 A 0 A_Firecustommissile("50CaseSpawn",0,FALSE,10,-12)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireBullets(1.0,1.0,1,7,"MachinegunBulletPuff")
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ZoomedFire")
 		TNT1 A 0 A_PlaySound("Repeater/Fire",1)

@@ -64,9 +64,8 @@ Weapon.BobRangeY 0.3
 Weapon.BobSpeed 1.7
 Inventory.forbiddento "64DoomPlayer","Tactical64DoomPlayer","Tactical64DoomPlayer_P","Modern"
 VisibleToPlayerClass "Doom4Guy"
-+WEAPON.AMMO_OPTIONAL
-+WEAPON.ALT_AMMO_OPTIONAL
-+WEAPON.AMMO_CHECKBOTH
+-WEAPON.AMMO_CHECKBOTH
++WEAPON.NOALERT
 States
 {
 	AboutUpgrade:

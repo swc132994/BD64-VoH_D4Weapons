@@ -8,9 +8,6 @@ Inventory.PickupSound "Minigun/Pickup"
 Inventory.PickupMessage "$GOTCHAINGUN"
 Obituary "$OB_MPCHAINGUN"
 Tag "$TAG_CHAINGUN"
-+INVENTORY.RESTRICTABSOLUTELY
-+inventory.IGNORESKILL
-+WEAPON.NOAUTOFIRE
 	States
 	{
 	Spawn:
@@ -92,6 +89,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_PlaySound("Minigun/SpinStart",6)
 		MIGG AABB 2
 		TNT1 A 0 A_PlaySound("Minigun/SpinLoop",7,1,1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))		//was tracer horz 12
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -102,6 +100,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 2
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -112,6 +111,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG AB 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -123,6 +123,7 @@ Tag "$TAG_CHAINGUN"
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 		MIGG AB 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -130,6 +131,7 @@ Tag "$TAG_CHAINGUN"
 		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 		MIGG AB 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -141,12 +143,14 @@ Tag "$TAG_CHAINGUN"
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 	Hold:
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -157,6 +161,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -167,6 +172,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -186,6 +192,7 @@ Tag "$TAG_CHAINGUN"
 	AltHold:
 		TNT1 A 0 A_PlaySound("Minigun/SpinLoop",7,1,1)
 		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"HydraFire")
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -196,6 +203,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -206,6 +214,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -216,6 +225,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
@@ -234,6 +244,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_JumpIfInventory("GatlingOverheat",100,"StallOut")
 		TNT1 A 0 A_PlaySound("Minigun/SpinLoop",7,1,1)
 		TNT1 A 0 A_GiveInventory("GatlingOverheat",1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 AAA 0 A_FireCustomMissile("BlueTracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 AAA 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(6.0,6.0,1,13,"MachinegunBulletPuff")
@@ -248,6 +259,7 @@ Tag "$TAG_CHAINGUN"
 		MIGG B 1
 		TNT1 A 0 A_JumpIfInventory("GatlingOverheat",100,"StallOut")
 		TNT1 A 0 A_GiveInventory("GatlingOverheat",1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 AAA 0 A_FireCustomMissile("BlueTracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 AAA 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(6.0,6.0,1,13,"MachinegunBulletPuff")
@@ -262,6 +274,7 @@ Tag "$TAG_CHAINGUN"
 		MIGG D 1
 		TNT1 A 0 A_JumpIfInventory("GatlingOverheat",100,"StallOut")
 		TNT1 A 0 A_GiveInventory("GatlingOverheat",1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 AAA 0 A_FireCustomMissile("BlueTracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 AAA 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(6.0,6.0,1,13,"MachinegunBulletPuff")
@@ -276,6 +289,7 @@ Tag "$TAG_CHAINGUN"
 		MIGG B 1
 		TNT1 A 0 A_JumpIfInventory("GatlingOverheat",100,"StallOut")
 		TNT1 A 0 A_GiveInventory("GatlingOverheat",1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 AAA 0 A_FireCustomMissile("BlueTracer",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 AAA 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(6.0,6.0,1,13,"MachinegunBulletPuff")
