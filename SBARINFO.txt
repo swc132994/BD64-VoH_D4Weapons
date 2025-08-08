@@ -1,5 +1,13 @@
 appendstatusbar Normal, forcescaled
 {
+	IsSelected D4GaussCannon
+	{
+		InInventory Zoomed,1
+		{
+		drawbar "GAUSCOP2","GAUSCOP1", Ammo PreciseCharger,vertical,interpolate(15),96,52;
+		}
+	}
+
 	InInventory MicroMissilesActive,1
 	{
 		InInventory MicroMissilesAmmo, 6
@@ -24,7 +32,7 @@ appendstatusbar fullscreen, forcescaled
 	{
 		InInventory Zoomed,1
 		{
-		drawbar "GAUSCOP2","GAUSCOP1", Ammo PreciseCharger,vertical,interpolate(15),72,63;
+		drawbar "GAUSCOP2","GAUSCOP1", Ammo PreciseCharger,vertical,interpolate(15),96,72;
 		}
 	}
 

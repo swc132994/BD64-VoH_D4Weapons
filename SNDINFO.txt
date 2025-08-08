@@ -209,17 +209,14 @@ D4GaussCannon/Fire1 		D4GCFI1
 D4GaussCannon/Fire2 		D4GCFI2
 D4GaussCannon/Fire3 		D4GCFI3
 
-D4GaussCannon/RailFire1 	D4GCRL1
-D4GaussCannon/RailFire2 	D4GCRL2
-D4GaussCannon/RailFire3 	D4GCRL3
+D4GaussCannon/ChargeFire2 	"sounds/GaussCannon/GaussCharge2Fire.ogg"
 
-D4GaussCannon/Charge		D4GCCHRG
+D4GaussCannon/Charge2Loop		"sounds/GaussCannon/GaussCharge2.ogg"
 D4GaussCannon/Electricity	D4GCELEC
 D4GaussCannon/AltFire 		D4GCALT
 
-$volume D4GaussCannon/Charge 0.6
+$volume D4GaussCannon/Charge2Loop 0.6
 $random D4GaussCannon/Fire { D4GaussCannon/Fire1 D4GaussCannon/Fire2 D4GaussCannon/Fire3 }
-$random D4GaussCannon/RailFire { D4GaussCannon/RailFire1 D4GaussCannon/RailFire2 D4GaussCannon/RailFire3 }
 
 //===========================================================================
 // BFG
