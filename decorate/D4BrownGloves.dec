@@ -1,4 +1,4 @@
-Actor 64BrownFist : 64Fist Replaces 64Fist
+Actor 64BrownFist : 64FistTactical Replaces 64Fist
 {
 Inventory.forbiddento "64DoomPlayer","Tactical64DoomPlayer","Tactical64DoomPlayer_P","Modern"
 VisibleToPlayerClass "Doom4Guy"
