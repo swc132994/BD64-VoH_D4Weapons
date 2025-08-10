@@ -81,6 +81,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
 		TNT1 A 0 A_TakeInventory("D4ChainGunSelected",0)
 		TNT1 A 0 A_TakeInventory("D4AltMode",0)
+		TNT1 A 0 A_Takeinventory("Kicking",0)
 		TNT1 A 0 A_StopSound(7)
 		TNT1 A 0 A_Lower
 		Wait
@@ -96,7 +97,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_PlaySound("Minigun/SpinStart",6)
 		MIGG AABB 2
 		TNT1 A 0 A_PlaySound("Minigun/SpinLoop",7,1,1)
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))		//was tracer horz 12
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))		//was tracer horz 12
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
@@ -104,9 +105,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 2
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
@@ -114,9 +115,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG AB 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
@@ -124,17 +125,17 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 		MIGG AB 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 		MIGG AB 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
@@ -142,16 +143,16 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG CD 1
 	Hold:
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",3)
@@ -159,9 +160,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",5)
@@ -169,9 +170,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",4)
@@ -179,7 +180,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
 		TNT1 A 0 A_Refire
 		TNT1 A 0 A_StopSound(7)
@@ -190,7 +191,7 @@ Tag "$TAG_CHAINGUN"
 	AltHold:
 		TNT1 A 0 A_PlaySound("Minigun/SpinLoop",7,1,1)
 		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"HydraFire")
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",1)
@@ -198,9 +199,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",3)
@@ -208,9 +209,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",5)
@@ -218,9 +219,9 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF A 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Y 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG B 1
-		TNT1 A 0 A_FireCustomMissile("Tracer",random(-3,3),0,6,-6,0,random(-2,2))
+		TNT1 A 0 A_FireCustomMissile("TracerChaingun",random(-3,3),0,6,-6,0,random(-2,2))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_FireBullets(4.0,4.0,1,13,"MachinegunBulletPuff")
 		TNT1 A 0 A_PlaySound("Minigun/Fire",4)
@@ -228,7 +229,7 @@ Tag "$TAG_CHAINGUN"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
-		MIGF B 1 BRIGHT A_SetAngle(random(1,-1) + angle)
+		MIGF Z 1 BRIGHT A_SetAngle(random(1,-1) + angle)
 		MIGG D 1
 		TNT1 A 0 A_Refire("AltHold")
 		TNT1 A 0 A_StopSound(7)
@@ -370,8 +371,6 @@ radius 2
 height 2
 alpha 0.9
 renderstyle Add
-Projectile
-+RANDOMIZE
 +FORCEXYBILLBOARD
 +DONTSPLASH
 +NOEXTREMEDEATH

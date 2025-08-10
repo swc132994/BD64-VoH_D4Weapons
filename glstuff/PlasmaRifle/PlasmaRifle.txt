@@ -7,13 +7,13 @@
 pointlight PLASMABALL
 {
 	color 0.0 0.0 1.0
-	size 128
+	size 64
 }
 
 pointlight PLASMABALLSMALL
 {
 	color 0.0 0.0 1.0
-	size 64
+	size 32
 }
 
 object PlasmaBallWeak

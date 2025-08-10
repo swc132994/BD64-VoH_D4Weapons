@@ -76,6 +76,7 @@ Tag "Gauss Cannon"
 		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
 		TNT1 A 0 A_TakeInventory("D4GaussSelected",0)
 		TNT1 A 0 A_TakeInventory("D4AltMode",0)
+		TNT1 A 0 A_Takeinventory("Kicking",0)
 		TNT1 A 0 A_Lower
 		Wait
 	Select:
