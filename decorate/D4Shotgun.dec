@@ -266,7 +266,7 @@ actor RocketExplosion2
 +MISSILE
 Radius 2
 Height 2
-Damagetype ExplosiveImpact
+Damagetype "Extreme"
 	States
 	{
 	Spawn:

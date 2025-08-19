@@ -225,13 +225,12 @@ radius 8
 gravity 1
 Alpha 0.9
 RenderStyle Add
-damagetype Explosive	//plasma
+damagetype "Extreme"
 Decal "Scorch"
 +BLOODSPLATTER
 +FORCERADIUSDMG
 -DONTSPLASH
 -nogravity
-+EXTREMEDEATH
 	States
 	{
 	Spawn:
@@ -288,7 +287,7 @@ actor gaussheavyplasmaTracerTrail18 : gaussheavyplasmaTracerTrail	{Alpha 0.05}
 
 ACTOR GaussRailPuff : HitPuff
 {
-DamageType Kick
+DamageType "Kick"
 Decal "SmallerScorch"
 -NOEXTREMEDEATH
 +EXTREMEDEATH

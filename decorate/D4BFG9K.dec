@@ -183,7 +183,7 @@ RenderStyle Add
 SeeSound ""
 DeathSound "D4BFG/MiniImpact"
 Decal "Scorch"
-DamageType "BFG"	// WAS desintegrate
+DamageType "BFG"
 +RANDOMIZE
 +FORCEXYBILLBOARD
 +THRUGHOST
@@ -279,7 +279,7 @@ ACTOR 64BFGBallHugeTracerSpawner
 	+FRIENDLY
     BloodType AXEDT
     Scale 1
-    DAMAGETYPE "BFGD"
+    DAMAGETYPE "Plasma"
     PROJECTILE
     RENDERSTYLE ADD
     +CLIENTSIDEONLY
@@ -314,7 +314,7 @@ ACTOR 64BFGBallHugeTracer
 	+FRIENDLY
     -SOLID
     -SHOOTABLE
-	DAMAGETYPE "BFGD"
+	DAMAGETYPE "Plasma"
     MinMissileChance 0
     RenderStyle None
     ReactionTime 25
@@ -344,15 +344,13 @@ actor 64BFGBallHugeTracerTrail
   Alpha 1
   seesound "null"
   deathsound "null"
-  DamageType "BFGD"
-  PROJECTILE
   +RANDOMIZE
   +FORCEXYBILLBOARD
   +FRIENDLY
   states
   {
   Spawn:
-    BF4T ABC 1 Bright A_FadeOut (0.333)
+    BF4T ABC 2 Bright A_FadeOut (0.333)
     loop
   }
 }
@@ -368,7 +366,6 @@ ACTOR 64BFGBallHugeTracerPuff
 	+FORCEXYBILLBOARD
 	Renderstyle Add
 	Scale 0.25
-	DamageType "BFGD"
 	States
 	{
 	Spawn:
@@ -390,7 +387,6 @@ BounceFactor 0.5
 +NOBLOCKMAP
 +NOTELEPORT
 +DONTSPLASH
-+MISSILE
 +FORCEXYBILLBOARD
 +CLIENTSIDEONLY
 +NOINTERACTION

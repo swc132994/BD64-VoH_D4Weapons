@@ -1,6 +1,7 @@
 ACTOR D4RocketLauncher : BrutalD464Weapon Replaces RocketLauncherSpawner
 {
 Weapon.SelectionOrder 3000
+Weapon.SelectionOrder 3000
 Weapon.AmmoUse 1
 Weapon.AmmoGive 2
 Weapon.AmmoType "RocketAmmo"
@@ -226,8 +227,6 @@ Height 2
 Projectile
 Speed 45
 Damage 30
-DamageType Explosive
-MeleeDamage 0
 Gravity 0.00
 Scale 0.7
 Decal "Scorch"
@@ -239,7 +238,6 @@ Decal "Scorch"
 SeeSound "weapons/RLL"
 DeathSound "Explosion"
 Obituary "$OB_MPROCKET"
-Species "Marines"
 	States
 	{
 	DM:
@@ -283,7 +281,7 @@ actor RocketExplosion
 Radius 2
 Height 2
 +MISSILE
-Damagetype ExplosiveImpact
+Damagetype "Extreme"
 	States
 	{
 	Spawn:
@@ -306,18 +304,11 @@ Height 2
 Radius 4
 MeleeDamage 0
 Gravity 0.7
-DamageType Explosive
 Decal "Scorch"
 SeeSound "weapons/RLL"
 DeathSound "Explosion"
 Obituary "$OB_MPROCKET"
-Species "Marines"
-Projectile
 -NOGRAVITY
-+EXTREMEDEATH
-+BLOODSPLATTER
-+THRUSPECIES
-+MTHRUSPECIES
 	States
 	{
 	Spawn1:
@@ -367,23 +358,15 @@ ACTOR BigbigRocket : 64Rocket
 {
 Scale 0.7
 Damage 30
-MeleeDamage 0
 Speed 35
 Radius 4
 Height 2
 Gravity 0
-DamageType Explosive
 Decal "Scorch"
 SeeSound "weapons/RLL"
 DeathSound "Explosion"
 Obituary "$OB_MPROCKET"
-Species "Marines"
-Projectile
 -NOGRAVITY
-+EXTREMEDEATH
-+BLOODSPLATTER
-+THRUSPECIES
-+MTHRUSPECIES
 	States
 	{
 	DM:
@@ -492,9 +475,7 @@ Damage 30
 Speed 45
 Radius 8
 Height 8
-Damagetype "ExplosiveImpactSwarmer"
-Species "Marines"
--NOEXTREMEDEATH
+Damagetype "Extreme"
 -GHOST
 -THRUGHOST
 +SEEKERMISSILE

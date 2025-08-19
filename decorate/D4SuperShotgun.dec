@@ -203,7 +203,7 @@ Height 2
 Alpha 1.0
 Gravity 0
 RenderStyle Add
-DamageType Plasma
+DamageType "Flames"
 +NOBLOCKMAP
 +NOTELEPORT
 +DONTSPLASH
@@ -261,8 +261,7 @@ Speed 45
 Radius 8
 Height 8
 gravity 0.5
-Damagetype "ExplosiveImpact"
-Species "Marines"
+Damagetype "Extreme"
 -NOEXTREMEDEATH
 -GHOST
 -THRUGHOST
