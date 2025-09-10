@@ -134,17 +134,27 @@ HeavyAssaultRifle/ScopedFire1 D4HARSF1
 HeavyAssaultRifle/ScopedFire2 D4HARSF2
 HeavyAssaultRifle/ScopedFire3 D4HARSF3
 
-HeavyAssaultRifle/SwitchToMissiles	"sounds/weapons/MG/MGSwitchToMissiles.ogg"
-HeavyAssaultRifle/SwitchToScope		"sounds/weapons/MG/MGSwitchToScope.ogg"
+HeavyAssaultRifle/SwitchToMissiles	"sounds/HeavyAssaultRifle/MGSwitchToMissiles.ogg"
+HeavyAssaultRifle/SwitchToScope		"sounds/HeavyAssaultRifle/MGSwitchToScope.ogg"
 
 HeavyAssaultRifle/MicroMissileOpen 	D4MMOPN
 HeavyAssaultRifle/MicroMissileReady D4MMRDY
 HeavyAssaultRifle/MicroMissileFire1 D4MFIRE1
 HeavyAssaultRifle/MicroMissileFire2 D4MFIRE2
+HeavyAssaultRifle/MicroMissileFire3 D4MFIRE3
+HeavyAssaultRifle/MicroMissileFire4 D4MFIRE4
+HeavyAssaultRifle/MicroMissileWhistle1 D4MWHIS1
+HeavyAssaultRifle/MicroMissileWhistle2 D4MWHIS2
+HeavyAssaultRifle/MicroMissileWhistle3 D4MWHIS3
+HeavyAssaultRifle/MicroMissileWhistle4 D4MWHIS4
 HeavyAssaultRifle/MicroMissileClose D4MMCLS
+
+
 
 $random HeavyAssaultRifle/Fire { HeavyAssaultRifle/Fire1 HeavyAssaultRifle/Fire2 HeavyAssaultRifle/Fire3 }
 $random HeavyAssaultRifle/ScopedFire { HeavyAssaultRifle/ScopedFire1 HeavyAssaultRifle/ScopedFire2 HeavyAssaultRifle/ScopedFire3 }
+$random HeavyAssaultRifle/MicroMissileFire { HeavyAssaultRifle/MicroMissileFire1 HeavyAssaultRifle/MicroMissileFire2 HeavyAssaultRifle/MicroMissileFire3 HeavyAssaultRifle/MicroMissileFire4 }
+$random HeavyAssaultRifle/MicroMissileWhistle { HeavyAssaultRifle/MicroMissileWhistle1 HeavyAssaultRifle/MicroMissileWhistle2 HeavyAssaultRifle/MicroMissileWhistle3 HeavyAssaultRifle/MicroMissileWhistle4 }
 
 //===========================================================================
 // Minigun
@@ -209,11 +219,18 @@ D4GaussCannon/Fire1 		D4GCFI1
 D4GaussCannon/Fire2 		D4GCFI2
 D4GaussCannon/Fire3 		D4GCFI3
 
-D4GaussCannon/ChargeFire2 	"sounds/GaussCannon/GaussCharge2Fire.ogg"
 
-D4GaussCannon/Charge2Loop		"sounds/GaussCannon/GaussCharge2.ogg"
-D4GaussCannon/Electricity	D4GCELEC
-D4GaussCannon/AltFire 		D4GCALT
+//Siege Mode
+D4GaussCannon/ChargeFire			"sounds/GaussCannon/GaussChargeFire.ogg"
+D4GaussCannon/ChargeLoop		"sounds/GaussCannon/GaussCharge.ogg"
+
+D4GaussCannon/SwitchToSiege			"sounds/GaussCannon/GCSwitchToSiege.ogg"
+
+//Precise Mode
+D4GaussCannon/ChargeFire2 	D4GPFIR
+D4GaussCannon/Charge2Loop		D4GPCHG
+
+D4GaussCannon/SwitchToPrecision		"sounds/GaussCannon/GCSwitchToPrecision.ogg"
 
 $volume D4GaussCannon/Charge2Loop 0.6
 $random D4GaussCannon/Fire { D4GaussCannon/Fire1 D4GaussCannon/Fire2 D4GaussCannon/Fire3 }

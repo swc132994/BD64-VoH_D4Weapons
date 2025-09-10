@@ -19,13 +19,14 @@ Tag "STG-46"
 		D4W2 C -1
 		Stop
 	KickingFlash:
-		STGG A 18 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
-		Stop
+		STGG A 0
+		Goto KickingFrameFlash
 	SlideKickingStart:
-		STGG A 23 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+		STGG A 0
+		Goto SlideKickingFrameStart
 	SlideKickingEnd:
-		STGG A 6 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
-		Stop
+		STGG A 0
+		Goto SlideKickingFrameEnd
 	v1ready:
 	Ready:
 		STGG A 1 A_WeaponReady
@@ -34,24 +35,14 @@ Tag "STG-46"
 		TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"NoAltMode")
 		Loop
 	Deselect:
-		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
-		TNT1 A 0 A_TakeInventory("D4PeaGunSelected",0)
-		TNT1 A 0 A_TakeInventory("D4AltMode",0)
-		STGG A 1 Offset(-8, 37)
-		STGG A 1 Offset(-20, 43)
-		STGG A 1 Offset(-45, 55)
-		STGG A 1 Offset(-70, 68)		
-		TNT1 A 0 A_Lower
-		Wait
+		STGG A 0 A_TakeInventory("IsD4Weapon",0)
+		STGG A 0 A_TakeInventory("D4PeaGunSelected",0)
+		STGG A 0 A_TakeInventory("D4AltMode",0)
+		Goto SelectAnimation
 	Select:
-		TNT1 A 0 A_GiveInventory("D4PeaGunSelected",1)
-		TNT1 A 0 A_GiveInventory("IsD4Weapon",1)
-		STGG A 1 Offset(75, 75)
-		STGG A 1 Offset(50, 60)
-		STGG A 1 Offset(28, 45)
-		STGG A 1 Offset(10, 34)		
-		TNT1 A 0 Offset(0,32) A_Raise
-		Wait
+		STGG A 0 A_GiveInventory("D4PeaGunSelected",1)
+		STGG A 0 A_GiveInventory("IsD4Weapon",1)
+		Goto SelectAnimation
 	Fire:
 		TNT1 A 0 A_FireCustomMissile("GunFireSmoke",0,0,6)
 		STGF A 1 BRIGHT

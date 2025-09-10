@@ -116,7 +116,7 @@ Activation THINGSPEC_Activate | THINGSPEC_ThingTargets | THINGSPEC_NoDeathSpecia
 		TNT1 A 0 A_Jump(128,"GetPrecise")
 	GetSiege:	
 		TNT1 A 0 A_JumpIfInTargetInventory("SiegeMode",1,"UpgradePeaGun")
-		//TNT1 A 0 A_GiveToTarget("SiegeMode",1)
+		TNT1 A 0 A_GiveToTarget("SiegeMode",1)
 		TNT1 A 0 A_Log("You have selected an upgrade for Gauss Cannon: Siege Mode")
 		Goto FinishUpgrade		
 	GetPrecise:	
