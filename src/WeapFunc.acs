@@ -50,7 +50,7 @@ Script "NuDoomUnmakerChecker" (void)
 {
 	for(int i = 6666; i < 6766; i++)
 	{
-		if(CheckActorInventory(i,"D4Unmaker"))	//checks if you have unmaker or ruiner
+		if(CheckActorInventory(i,"D4Unmaker"))	//checks if you have unmaker
 		{
 			SetResultValue(2);
 			if(CheckActorInventory(i,"WpnPower1Icon") && CheckActorInventory(i,"WpnPower2Icon") && CheckActorInventory(i,"WpnPower3Icon"))	//checks if you have all 3 demon keys

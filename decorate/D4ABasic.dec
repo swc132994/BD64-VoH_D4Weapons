@@ -65,7 +65,8 @@ Weapon.BobSpeed 1.7
 Inventory.forbiddento "64DoomPlayer","Tactical64DoomPlayer","Tactical64DoomPlayer_P","Modern"
 VisibleToPlayerClass "Doom4Guy"
 -WEAPON.AMMO_CHECKBOTH
-+WEAPON.NOALERT
+-WEAPON.NOALERT
+-WEAPON.NOAUTOFIRE
 States
 {
 	KickingFrameFlash:
