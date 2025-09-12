@@ -23,19 +23,15 @@ script "SSGFireUpgradeCheck" (void)
 	else
 	{
 	GiveInventory("SSGCounter",2);
-	TakeInventory("Shell",2);
 	}	
 }
 
-<<<<<<< Updated upstream:acs/WeapFunc.acs
 Script "GaussPreciseModeActive" (void)
 {
 	SetFont("");
 //	HudMessage("a",0,0,0,0,0,0);
 }
 
-=======
->>>>>>> Stashed changes:src/WeapFunc.acs
 Script "NoUpgradedWeapons" (int Weapon)
 {
 	static str NoAltModeWeapon[6] = { "the Chainsaw", "the Energy Pistol", "the Repeater", "the Lightning Gun", "this thing...", "the STG-46" };
