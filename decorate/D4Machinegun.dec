@@ -99,7 +99,7 @@ Tag "Heavy Assault Rifle"
 		TNT1 A 0 A_Takeinventory("Zoomed",0)
 		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
 		TNT1 A 0 A_TakeInventory("D4MachinegunSelected",0)
-		TNT1 A 0 A_TakeInventory("MicroMissilesActive",0)		
+		TNT1 A 0 A_TakeInventory("MicroMissilesActive",0)
 		HARS A 0 A_JumpIfInventory("HARTacticalScope",1,3)
 		HARM A 0 A_JumpIfInventory("HARMicroMissiles",1,2)
 		HARC A 0
@@ -115,7 +115,7 @@ Tag "Heavy Assault Rifle"
 		Goto SelectAnimation
 	Fire:
 		HARM "#" 0 A_JumpIfInventory("MicroMissilesActive",1,"MicroMissilesFire")
-		HARS N 0 A_JumpIfInventory("Zoomed",1,"TacticalScopeFire")	
+		HARS N 0 A_JumpIfInventory("Zoomed",1,"TacticalScopeFire")
 		TNT1 A 0 A_FireCustomMissile("Tracer",random(-2,2),0,12,-6,0,random(-1,1))
 		TNT1 A 0 A_Firecustommissile("ChaingunCaseSpawn",0,0,10,-12)
 		TNT1 A 0 A_AlertMonsters
@@ -149,7 +149,7 @@ Tag "Heavy Assault Rifle"
 		HARM P 0 A_JumpIfInventory("MicroMissilesAmmo",4,"MicroMissilesFire3")
 		HARM R 0 A_JumpIfInventory("MicroMissilesAmmo",3,"MicroMissilesFire4")
 		HARM T 0 A_JumpIfInventory("MicroMissilesAmmo",2,"MicroMissilesFire5")
-		HARM V 0 A_JumpIfInventory("MicroMissilesAmmo",1,"MicroMissilesFire6")		
+		HARM V 0 A_JumpIfInventory("MicroMissilesAmmo",1,"MicroMissilesFire6")
 	MicroMissilesFire1:
 		HARM M 1 BRIGHT Offset(1, 33) A_TakeInventory("MicroMissilesAmmo",1,TIF_NOTAKEINFINITE)
 		HARM N 1 Offset(8, 40)
@@ -201,38 +201,38 @@ Tag "Heavy Assault Rifle"
 		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
-		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)		
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",20,5,22)
 		HARS N 5
 		HARS N 0 A_Refire
 		HARS N 5 A_WeaponReady(1)
 		Goto Ready3
 	ChangeMode:
 		TNT1 A 0 A_TakeInventory("WeaponAltMode",1)
-		TNT1 A 0 A_JumpIfInventory("HARTacticalScope",1,"MircoMissilesCheck")		
+		TNT1 A 0 A_JumpIfInventory("HARTacticalScope",1,"MircoMissilesCheck")
 		TNT1 A 0 A_JumpIfInventory("HARMicroMissiles",1,"TacticalScopeCheck")
 		TNT1 A 0 A_JumpIfInventory("TacticalScopeMode",1,"GoToUpgrade")
 		TNT1 A 0 A_JumpIfInventory("MicroMissilesMode",1,1)
 		Goto AboutUpgrade
-	MircoMissilesCheck:	
+	MircoMissilesCheck:
 		TNT1 A 0 A_JumpIfInventory("MicroMissilesMode",1,"GoToUpgrade")
-		Goto OneUpgradeOnly		
+		Goto OneUpgradeOnly
 	TacticalScopeCheck:
 		TNT1 A 0 A_JumpIfInventory("TacticalScopeMode",1,"GoToUpgrade")
-		Goto OneUpgradeOnly	
+		Goto OneUpgradeOnly
 	GoToUpgrade:
 		HARS A 0 A_JumpIfInventory("HARTacticalScope",1,3)
 		HARM A 0 A_JumpIfInventory("HARMicroMissiles",1,2)
 		HARC A 0
 		"####" A 0 A_ZoomFactor(1)
-		"####" A 0 A_TakeInventory("MicroMissilesActive",1)		
-		"####" A 0 A_TakeInventory("Zoomed",1)		
+		"####" A 0 A_TakeInventory("MicroMissilesActive",1)
+		"####" A 0 A_TakeInventory("Zoomed",1)
 		"####" A 1 Offset(-11, 37)
 		"####" A 1 Offset(-25, 43)
 		"####" A 1 Offset(-49, 50)
 		"####" A 1 Offset(-64, 64)
 		TNT1 A 3 Offset(1,32)
 		TNT1 A 0 A_JumpIfInventory("HARTacticalScope",1,2)
-		TNT1 A 0 A_JumpIfInventory("TacticalScopeMode",1,"TacticalScopeUpgrade")		
+		TNT1 A 0 A_JumpIfInventory("TacticalScopeMode",1,"TacticalScopeUpgrade")
 	MicroMissileUpgrade:
 		TNT1 A 0 A_Print("Micro Missile Selected",2)
 		TNT1 A 0 A_PlaySound("HeavyAssaultRifle/SwitchToMissiles",1)
@@ -294,7 +294,7 @@ Tag "Heavy Assault Rifle"
 		HARM LLLLLL 0 A_GiveInventory("MicroMissilesAmmo",0)
 		TNT1 A 0 A_PlaySound("HeavyAssaultRifle/MicroMissileClose",1)
 		HARM JG 1
-		Goto Ready	
+		Goto Ready
 	ScopeAltFire:
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ScopeStop")
 		HARS GHI 1
@@ -310,7 +310,7 @@ Tag "Heavy Assault Rifle"
 		HARS NLKJ 1
 		TNT1 A 0 A_ZoomFactor(1)
 		HARS IHG 1
-		Goto Ready	
+		Goto Ready
 	NoAmmo:
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_Takeinventory("WeaponAltMode",1)

@@ -12,7 +12,7 @@ Painsaw/DeSelect	D4PSSWIT
 $volume Painsaw/Idle 0.5
 
 //===========================================================================
-// Energy Pistol
+// Energy Pistol (some file names taken from D4T)
 //===========================================================================
 EnergyPistol/Pickup		D4EPPICK
 
@@ -56,7 +56,7 @@ Repeater/MagnumFire D4RPFIR2
 $volume Repeater/Fire 0.8
 
 //===========================================================================
-// Shotgun
+// Shotgun (some file names taken from D4T)
 //===========================================================================
 Shotgun/Pickup		D4SGPICK
 
@@ -98,7 +98,7 @@ $volume Shotgun/PumpIn 0.5
 $volume Shotgun/PumpOut 0.5
 
 //===========================================================================
-// Super Shotgun
+// Super Shotgun (some file names taken from D4T)
 //===========================================================================
 
 $random D2K16SuperShotgun/Fire { D2K16SuperShotgun/Fire1 D2K16SuperShotgun/Fire2 }
@@ -121,7 +121,7 @@ $volume SuperShotgun/Open 0.75
 $volume SuperShotgun/Close 0.75
 
 //===========================================================================
-// Heavy Assault Rifle
+// Heavy Assault Rifle (some file names taken from D4T)
 //===========================================================================
 HeavyAssaultRifle/Pickup D4HARPIC
 HeavyAssaultRifle/ModSwitch D4HARMOD
@@ -157,26 +157,25 @@ $random HeavyAssaultRifle/MicroMissileFire { HeavyAssaultRifle/MicroMissileFire1
 $random HeavyAssaultRifle/MicroMissileWhistle { HeavyAssaultRifle/MicroMissileWhistle1 HeavyAssaultRifle/MicroMissileWhistle2 HeavyAssaultRifle/MicroMissileWhistle3 HeavyAssaultRifle/MicroMissileWhistle4 }
 
 //===========================================================================
-// Minigun
+// Chaingun (some sounds names taken from D4T)
 //===========================================================================
-Minigun/Pickup 	  D4MGPICK
-Minigun/ModSwitch D4MGMOD
+$random Chaingun/Fire {D4CHAIN1 D4CHAIN2 D4CHAIN3 D4CHAIN4 D4CHAIN5 D4CHAIN6}
+D4CHAIN1	"sounds/Chaingun/sfx_chaingun_single_fire_01.ogg"
+D4CHAIN2	"sounds/Chaingun/sfx_chaingun_single_fire_02.ogg"
+D4CHAIN3	"sounds/Chaingun/sfx_chaingun_single_fire_03.ogg"
+D4CHAIN4	"sounds/Chaingun/sfx_chaingun_single_fire_04.ogg"
+D4CHAIN5	"sounds/Chaingun/sfx_chaingun_single_fire_05.ogg"
+D4CHAIN6	"sounds/Chaingun/sfx_chaingun_single_fire_06.ogg"
 
-Minigun/Fire1 	  D4MGFIR1
-Minigun/Fire2 	  D4MGFIR2
-Minigun/Fire3	  D4MGFIR3
+Chaingun/SwitchToRotator	"sounds/Chaingun/ChaingunSwitchToRotator.ogg"
+Chaingun/SwitchToTurret		"sounds/Chaingun/ChaingunSwitchToTurret.ogg"
 
-Minigun/HydraFire1 	  D4MGHFI1
-Minigun/HydraFire2 	  D4MGHFI2
-Minigun/HydraFire3	  D4MGHFI3
-
-Minigun/SpinStart D4MGSPST
-Minigun/SpinLoop  D4MGSPLO
-Minigun/SpinEnd	  D4MGSPEN
-Minigun/Cooldown  D4MGCOOL
-
-$random Minigun/Fire { Minigun/Fire1 Minigun/Fire2 Minigun/Fire3 }
-$random Minigun/HydraFire { Minigun/HydraFire1 Minigun/HydraFire2 Minigun/HydraFire3 }
+Chaingun/SpinStartAndLoop		"sounds/Chaingun/CGSpinStartAndLoop.ogg"
+Chaingun/SpinStop				"sounds/Chaingun/ChaingunLoopStop.ogg"
+Chaingun/TurretStartAndLoop 	"sounds/Chaingun/TurretStartAndLoop.ogg"
+Chaingun/TurretEnd				"sounds/Chaingun/TurretEnd.ogg"
+Chaingun/UnreadyTurret			"sounds/Chaingun/ChaingunUnreadyTurret.ogg"
+Chaingun/ReadyTurret			"sounds/Chaingun/ChaingunReadyTurret.ogg"
 
 //===========================================================================
 // Rocket Launcher

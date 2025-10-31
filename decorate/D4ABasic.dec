@@ -64,9 +64,6 @@ Weapon.BobRangeY 0.3
 Weapon.BobSpeed 1.7
 Inventory.forbiddento "64DoomPlayer","Tactical64DoomPlayer","Tactical64DoomPlayer_P","Modern"
 VisibleToPlayerClass "Doom4Guy"
--WEAPON.AMMO_CHECKBOTH
--WEAPON.NOALERT
--WEAPON.NOAUTOFIRE
 States
 {
 	KickingFrameFlash:
@@ -82,7 +79,7 @@ States
 		"####" A 1 Offset(50, 60)
 		"####" A 1 Offset(28, 45)
 		"####" A 1 Offset(10, 34)
-		"####" A 0 Offset(0,32) A_Raise
+		"####" A 0 A_Raise
 		Wait
 	DeselectAnimation:
 		"####" A 1 Offset(-8, 37)
@@ -222,22 +219,12 @@ Actor MicroMissilesAmmo : Ammo
 	+UNDROPPABLE
 }
 
-ACTOR ChaingunUpgrade : Ammo
-{
-Game Doom
-Inventory.PickupMessage "Picked up a Minigun Upgrade."
-Inventory.Amount 1
-Inventory.MaxAmount 2
-Ammo.BackpackAmount 0
-Ammo.BackpackMaxAmount 2
-//Inventory.Icon "AMMOA0"
-	States
-	{
-	Spawn:
-		AMMO A -1
-		Stop
-	}
-}
+//Chaingun Upgrades
+Actor GatlingRotatorMode : WeaponUpgrade {} 
+Actor ChaingunGatlingRotator : GatlingRotatorMode {} 
+Actor MobileTurretMode : WeaponUpgrade {} 
+Actor ChaingunMobileTurret : MobileTurretMode {}
+Actor MobileTurretAltActive : MobileTurretMode {}
 
 ACTOR RocketLauncherUpgrade : Ammo
 {
