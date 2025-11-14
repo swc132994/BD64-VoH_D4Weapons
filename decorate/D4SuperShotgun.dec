@@ -25,13 +25,10 @@ Tag "$TAG_SUPERSHOTGUN"
 	v1ready:
 	Ready:
 		TNT1 A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
-		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")		
-		SSGG A 1 A_WeaponReady
-		Loop
-	Ready2:
-		SSGA C 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
-		SSGA C 0 A_JumpIfInventory("Kicking",1,"DoKick")		
-		SSGA C 1 A_WeaponReady	
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		SSGA C 0 A_JumpIfInventory("Zoomed",1,2)
+		SSGG A 0
+		"####" "#" 1 A_WeaponReady
 		Loop
 	Deselect:
 		SSGG A 0 A_TakeInventory("IsD4Weapon",0)
@@ -70,6 +67,7 @@ Tag "$TAG_SUPERSHOTGUN"
 		SSGF A 1 BRIGHT ACS_NamedExecute("SSGFireUpgradeCheck")
 		SSGF B 1 A_SetAngle(random(12,-12) + angle)
 		SSGF BBBCDEF 1 A_SetAngle(random(3,-3) + angle)
+		SSGG A 0 A_WeaponReady		
 		SSGG A 0 A_JumpIfInventory("SSGCounter",2,"Reload")
 		Goto Ready
 	PreciseFire:
@@ -98,9 +96,9 @@ Tag "$TAG_SUPERSHOTGUN"
 		SSGF A 1 BRIGHT ACS_NamedExecute("SSGFireUpgradeCheck")
 		SSGF B 1 A_SetAngle(random(12,-12) + angle)
 		SSGF BBBCDE 1 A_SetAngle(random(3,-3) + angle)
-		SSGA C 5 A_WeaponReady(1)
+		SSGA C 2 A_WeaponReady(1)
 		SSGA C 0 A_JumpIfInventory("SSGCounter",2,"Reload")
-		Goto Ready2
+		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SSGPreciseShot",1,1)
 		Goto AboutSSGUpgrade
@@ -108,7 +106,7 @@ Tag "$TAG_SUPERSHOTGUN"
 		SSGA C 0 A_ZoomFactor(1.25)
 		SSGA AB 1
 		SSGA C 0 A_GiveInventory("Zoomed",1)
-		Goto Ready2
+		Goto Ready
 	AltHold:
 		TNT1 A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")	

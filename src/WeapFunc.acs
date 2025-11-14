@@ -18,7 +18,6 @@ script "SSGFireUpgradeCheck" (void)
 	if(CheckInventory("SSGDoubleTrouble"))
 	{
 	GiveInventory("SSGCounter",1);
-	TakeInventory("Shell",1);
 	}
 	else
 	{
