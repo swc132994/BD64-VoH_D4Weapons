@@ -176,7 +176,7 @@ Projectile
 	Spawn:
 		PLSS A 1 Bright
 		TNT1 A 0 A_CheckFloor("Death")
-		TNT1 A 0 A_SpawnItemEx("BlueFlareSmallProjectile")
+		TNT1 A 0 A_SpawnItemEx("PlasmaFlare")
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail1",(3 *momx)/-35.0,-(3 *momy)/-35.0,0+(3 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail2",(6 *momx)/-35.0,-(6 *momy)/-35.0,0+(6 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail3",(9 *momx)/-35.0,-(9 *momy)/-35.0,0+(9 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
@@ -227,7 +227,7 @@ ReactionTime 60
 	Spawn:
 		PLSS A 1 Bright
 		TNT1 A 0 A_Countdown
-		TNT1 A 0 A_SpawnItemEx("BlueFlareSmallProjectile")
+		TNT1 A 0 A_SpawnItemEx("PlasmaFlare")
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail1",(3 *momx)/-35.0,-(3 *momy)/-35.0,0+(3 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail2",(6 *momx)/-35.0,-(6 *momy)/-35.0,0+(6 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
 		TNT1 A 0 A_SpawnItemEx("WeakPlasmaBallTrail3",(9 *momx)/-35.0,-(9 *momy)/-35.0,0+(9 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
