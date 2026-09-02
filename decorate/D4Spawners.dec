@@ -1,5 +1,5 @@
 //REPLACE BD64 SPECIFIC SPAWNERS
-Actor D4DroppedShotgunSpawner : ShotgunDrop Replaces ShotgunDrop
+Actor D4DroppedShotgunSpawner : 64ShotgunDrop Replaces 64ShotgunDrop
 {
 	States
 	{
@@ -10,7 +10,7 @@ Actor D4DroppedShotgunSpawner : ShotgunDrop Replaces ShotgunDrop
 	}
 }
 
-Actor D4DroppedSuperShotgunSpawner : SSGDrop Replaces SSGDrop
+Actor D4DroppedSuperShotgunSpawner : 64SSGDrop Replaces 64SSGDrop
 {
 	States
 	{
@@ -21,7 +21,7 @@ Actor D4DroppedSuperShotgunSpawner : SSGDrop Replaces SSGDrop
 	}
 }
 
-Actor D4DroppedDroppedRifleSpawner : RifleDrop Replaces RifleDrop
+Actor D4DroppedDroppedRifleSpawner : 64RifleDrop Replaces 64RifleDrop
 {
 	States
 	{
@@ -32,7 +32,7 @@ Actor D4DroppedDroppedRifleSpawner : RifleDrop Replaces RifleDrop
 	}
 }
 
-Actor D4DroppedChaingunSpawner : ChaingunDrop Replaces ChaingunDrop
+Actor D4DroppedChaingunSpawner : 64ChaingunDrop Replaces 64ChaingunDrop
 {
 	States
 	{
@@ -43,7 +43,7 @@ Actor D4DroppedChaingunSpawner : ChaingunDrop Replaces ChaingunDrop
 	}
 }
 
-Actor D4DroppedChainsawSpawner : ChainsawDrop Replaces ChainsawDrop
+Actor D4DroppedChainsawSpawner : 64ChainsawDrop Replaces 64ChainsawDrop
 {
 	States
 	{
