@@ -1,4 +1,4 @@
-actor 64RifleTacticalRemover : 64RifleTactical Replaces 64RifleTactical	//makes dropped tactical weapon invisible
+actor 64RifleTacticalRemover : 64RifleTactical Replaces 64RifleTactical	//makes dropped Tactical weapon invisible
 {
 +INVENTORY.RESTRICTABSOLUTELY
 Inventory.ForbiddenTo "Doom4Guy"
@@ -15,8 +15,8 @@ actor 64FistRemover : 64RifleTacticalRemover Replaces 64Fist {}
 actor 64TacticalFistRemover : 64RifleTacticalRemover Replaces 64FistTactical {}
 
 actor 64ChainsawRemover : 64RifleTacticalRemover Replaces 64Chainsaw {}
-actor 64ChainsawTACTICALRemover : 64RifleTacticalRemover Replaces 64ChainsawTACTICAL {}
-actor 64ChainsawTACTICALClassicRemover : 64RifleTacticalRemover Replaces 64ChainsawTactical_Classic {}
+actor 64ChainsawTacticalRemover : 64RifleTacticalRemover Replaces 64ChainsawTactical {}
+actor 64ChainsawTacticalClassicRemover : 64RifleTacticalRemover Replaces 64ChainsawTactical_Classic {}
 
 Actor 64PistolRemover : 64RifleTacticalRemover Replaces 64Pistol {}
 Actor 64PistolTacticalRemover : 64RifleTacticalRemover Replaces 64PistolTactical {}
@@ -36,22 +36,22 @@ actor 64ChaingunTacticalRemover : 64RifleTacticalRemover Replaces 64ChaingunTact
 ACTOR 6464ProximityMineRemover : 64RifleTacticalRemover Replaces 64ProximityMine {}
 
 ACTOR 64RocketLauncherRemover : 64RifleTacticalRemover Replaces 64RocketLauncher {}
-ACTOR 64RocketLauncherTACTICALRemover : 64RifleTacticalRemover Replaces 64RocketLauncherTactical {}
+ACTOR 64RocketLauncherTacticalRemover : 64RifleTacticalRemover Replaces 64RocketLauncherTactical {}
 
 ACTOR 64PlasmaRifleRemover : 64RifleTacticalRemover Replaces 64PlasmaRifle {}
-ACTOR 64PlasmaRifleTACTICALRemover : 64RifleTacticalRemover Replaces 64PlasmaRifleTactical {}
+ACTOR 64PlasmaRifleTacticalRemover : 64RifleTacticalRemover Replaces 64PlasmaRifleTactical {}
 
 ACTOR 64BFG9000Remover : 64RifleTacticalRemover Replaces 64BFG9000 {}
-ACTOR 64BFG9000TACTICALRemover : 64RifleTacticalRemover Replaces 64BFG9000Tactical {}
+ACTOR 64BFG9000TacticalRemover : 64RifleTacticalRemover Replaces 64BFG9000Tactical {}
 
 ACTOR UnmakerRemover : 64RifleTacticalRemover Replaces Unmaker {}
-ACTOR UnmakerTACTICALRemover : 64RifleTacticalRemover Replaces UnmakerTACTICAL {}
+ACTOR UnmakerTacticalRemover : 64RifleTacticalRemover Replaces UnmakerTactical {}
 
 ACTOR 64GaussCannonRemover : 64RifleTacticalRemover Replaces 64GaussCannon {}
-ACTOR 64GaussCannonTACTICALRemover : 64RifleTacticalRemover Replaces 64GaussCannonTACTICAL {}
+ACTOR 64GaussCannonTacticalRemover : 64RifleTacticalRemover Replaces 64GaussCannonTactical {}
 
 ACTOR LasergunRemover : 64RifleTacticalRemover Replaces Lasergun {}
-ACTOR LasergunTACTICALRemover : 64RifleTacticalRemover Replaces LasergunTACTICAL {}
+ACTOR LasergunTacticalRemover : 64RifleTacticalRemover Replaces LasergunTactical {}
 
 actor 64MP40Remover : 64RifleTacticalRemover Replaces 64MP40 {}
 actor 64MP40TacticalRemover : 64RifleTacticalRemover Replaces 64MP40Tactical {}
