@@ -1,0 +1,254 @@
+ACTOR D4Pistol : BrutalD464Weapon Replaces PistolSpawner
+{
+Weapon.SelectionOrder 2400
+Weapon.AmmoType "PistolCharging"
+Inventory.PickupSound "EnergyPistol/Pickup"
+Inventory.PickupMessage "You got the Energy Pistol!"
+Obituary "$OB_MPPISTOL"
+Tag "Energy Pistol"
+	States
+	{
+	KickingFlash:
+		PISG A 0
+		Goto KickingFrameFlash
+	SlideKickingStart:
+		PISG A 0
+		Goto SlideKickingFrameStart
+	SlideKickingEnd:
+		PISG A 0
+		Goto SlideKickingFrameEnd
+	Spawn:
+		D4W2 A -1
+		Stop
+	v1Ready:
+	Ready:
+		PISG A 1 A_WeaponReady
+		PISG A 0 A_TakeInventory("PistolCharging",50)
+		PISG A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
+		PISG A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+		PISG A 0 A_JumpIfInventory("WeaponAltMode",1,"NoAltMode")
+		Loop
+	Deselect:
+		PISG A 0 A_TakeInventory("IsD4Weapon",0)
+		PISG A 0 A_TakeInventory("D4PeaGunSelected",0)
+		PISG A 0 A_TakeInventory("D4AltMode",0)
+		Goto DeselectAnimation
+	Select:
+		PISG A 0 A_GiveInventory("D4PeaGunSelected",1)
+		PISG A 0 A_GiveInventory("IsD4Weapon",1)
+		Goto SelectAnimation
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("PistolCharging",25,"ChargedFire")
+		TNT1 A 0 A_FireCustomMissile("PistolplasmaTracer",1,0,16,-11,0,1)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound("EnergyPistol/Fire1",1)
+		TNT1 A 0 A_JumpIfInventory("PistolCharging",1,"ChargedFireAnimation")
+		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
+		TNT1 A 0 A_Jump(256,2)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
+		PISF A 1 BRIGHT Offset(2, 33) A_SetAngle(1 + angle)
+		PISF C 2 Offset(8, 32)
+		PISF C 1 Offset(43, 30) A_SetAngle(-1 + angle)
+		PISF C 1 Offset(44, 48)
+		PISF C 1 Offset(60, 63)
+		PISF C 1 Offset(43, 58)
+		PISF B 1 Offset(25, 45)
+		PISF B 1 Offset(16, 44)
+		PISF B 1 Offset(4, 37)
+		PISG A 1 Offset(1, 33)
+		PISG A 5 A_WeaponReady
+		TNT1 A 0 A_Refire
+		Goto Ready
+	ChargedFire:
+		TNT1 A 0 A_FireCustomMissile("PistolheavyplasmaTracer",1,0,16,-11,0,1)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound("EnergyPistol/FireCharged",1)
+		TNT1 A 0 A_StopSound(5)		
+	ChargedFireAnimation:
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,40)
+		TNT1 A 0 A_Jump(256,2)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle3",20,5,22)
+		PISA E 1 Offset(1, 33) BRIGHT A_SetAngle(1 + angle)
+		PISA F 1 Offset(41, 58)
+		PISA F 1 Offset(54, 64) A_TakeInventory("PistolCharging",50)
+		PISA F 1 Offset(55, 65) A_SetAngle(-1 + angle)
+		PISA F 1 Offset(23, 50)
+		PISA G 1 Offset(9, 38)
+		PISA G 2 Offset(2, 34)
+		PISA D 2 Offset(1, 33)
+		TNT1 A 0 A_ZoomFactor(1.00)
+		PISA CBA 1
+		PISG A 5
+		TNT1 A 0 A_Refire
+		Goto Ready
+	AltFire:
+		TNT1 A 0 A_ZoomFactor(1.25)
+		TNT1 A 0 A_PlaySound("EnergyPistol/Charge",5)
+		PISA ABC 1
+	AltHold:
+		TNT1 A 0 A_GiveInventory("PistolCharging",1)
+		tnt1 A 0 A_PlaySound("EnergyPistol/ChargeLoop", chan_weapon, 1, True)
+		PISA D 1 A_WeaponReady(WRF_NOSECONDARY)
+		TNT1 A 0 A_Refire
+	AltHoldEnd:
+		TNT1 A 0 A_StopSound(5)
+		TNT1 A 0 A_StopSound(1)
+		TNT1 A 0 A_ZoomFactor(1.00)
+		PISA CBA 1
+		Goto Ready
+	NoAltMode:
+		TNT1 A 0 A_TakeInventory("WeaponAltMode",1)
+		TNT1 A 0 ACS_NamedExecuteWithResult("NoUpgradedWeapons",2)
+		Goto Ready
+	}
+}
+
+Actor PistolplasmaTracer : FastProjectile
+{
+scale 0.2
+damage(random(7,10))
+speed 200
+Alpha 0.9
+radius 2
+height 2
+RenderStyle Add
+damagetype Normal
+Decal "BulletDecalNew1"
++BLOODSPLATTER
+-DONTSPLASH
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay A_SpawnItemEx("PistolplasmaTracerTrail",0,0,2)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail2",(2 *momx)/-35.0,-(2 *momy)/-35.0,2+(2 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail3",(4 *momx)/-35.0,-(4 *momy)/-35.0,2+(4 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail4",(6 *momx)/-35.0,-(6 *momy)/-35.0,2+(6 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail5",(8 *momx)/-35.0,-(8 *momy)/-35.0,2+(8 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail6",(10*momx)/-35.0,-(10*momy)/-35.0,2+(10*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail7",(12*momx)/-35.0,-(12*momy)/-35.0,2+(12*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail8",(14*momx)/-35.0,-(14*momy)/-35.0,2+(14*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail9",(16*momx)/-35.0,-(16*momy)/-35.0,2+(16*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail10",(18*momx)/-35.0,-(18*momy)/-35.0,2+(18*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail11",(20*momx)/-35.0,-(20*momy)/-35.0,2+(20*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolplasmaTracerTrail12",(22*momx)/-35.0,-(22*momy)/-35.0,2+(22*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		Loop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("DetectFloorBullet")
+		TNT1 A 0 A_SpawnItemEx("DetectCeilBullet")
+		TNT1 AAAAA 0 A_SpawnItemEx("BlueFlareSmall")
+		TNT1 AAAAA 0 A_CustomMissile("BluePlasmaParticle",0,0,random(0,360),2,random(0,360))
+		BL1I ABCD 1 BRIGHT A_SpawnItemEx("BlueFlareSmall")
+		TNT2 AA 3 A_CustomMissile("PlasmaSmoke",1,0,random(0,360),2,random(0,160))
+		Stop
+	}
+}
+
+actor PistolplasmaTracerTrail
+{
+Scale 0.03
+RenderStyle Add
+Alpha 0.9
++NOINTERACTION
++CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+		SPKB A 2 BRIGHT
+		stop
+	}
+}
+
+actor PistolplasmaTracerTrail2 : PistolplasmaTracerTrail	{Alpha 0.85}
+actor PistolplasmaTracerTrail3 : PistolplasmaTracerTrail	{Alpha 0.80}
+actor PistolplasmaTracerTrail4 : PistolplasmaTracerTrail	{Alpha 0.75}
+actor PistolplasmaTracerTrail5 : PistolplasmaTracerTrail	{Alpha 0.70}
+actor PistolplasmaTracerTrail6 : PistolplasmaTracerTrail	{Alpha 0.65}
+actor PistolplasmaTracerTrail7 : PistolplasmaTracerTrail	{Alpha 0.60}
+actor PistolplasmaTracerTrail8 : PistolplasmaTracerTrail	{Alpha 0.55}
+actor PistolplasmaTracerTrail9 : PistolplasmaTracerTrail	{Alpha 0.50}
+actor PistolplasmaTracerTrail10 : PistolplasmaTracerTrail	{Alpha 0.45}
+actor PistolplasmaTracerTrail11 : PistolplasmaTracerTrail	{Alpha 0.40}
+actor PistolplasmaTracerTrail12 : PistolplasmaTracerTrail	{Alpha 0.35}
+actor PistolplasmaTracerTrail13 : PistolplasmaTracerTrail	{Alpha 0.30}
+actor PistolplasmaTracerTrail14 : PistolplasmaTracerTrail	{Alpha 0.25}
+actor PistolplasmaTracerTrail15 : PistolplasmaTracerTrail	{Alpha 0.20}
+actor PistolplasmaTracerTrail16 : PistolplasmaTracerTrail	{Alpha 0.15}
+actor PistolplasmaTracerTrail17 : PistolplasmaTracerTrail	{Alpha 0.10}
+actor PistolplasmaTracerTrail18 : PistolplasmaTracerTrail	{Alpha 0.05}
+
+Actor PistolheavyplasmaTracer : FastProjectile
+{
+scale 0.6
+damage(random(30,40))
+speed 200
+Alpha 0.9
+radius 2
+height 2
+RenderStyle Add
+damagetype "Plasma"
+Decal "SmallerScorch"
++BLOODSPLATTER
+-DONTSPLASH
+	States
+	{
+	Spawn:
+		TNT1 A 1 NoDelay BRIGHT A_SpawnItemEx("PistolheavyplasmaTracerTrail",0,0,2)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail2",(2 *momx)/-35.0,-(2 *momy)/-35.0,2+(2 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail3",(4 *momx)/-35.0,-(4 *momy)/-35.0,2+(4 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail4",(6 *momx)/-35.0,-(6 *momy)/-35.0,2+(6 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail5",(8 *momx)/-35.0,-(8 *momy)/-35.0,2+(8 *momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail6",(10*momx)/-35.0,-(10*momy)/-35.0,2+(10*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail7",(12*momx)/-35.0,-(12*momy)/-35.0,2+(12*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail8",(14*momx)/-35.0,-(14*momy)/-35.0,2+(14*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail9",(16*momx)/-35.0,-(16*momy)/-35.0,2+(16*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail10",(18*momx)/-35.0,-(18*momy)/-35.0,2+(18*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail11",(20*momx)/-35.0,-(20*momy)/-35.0,2+(20*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		TNT1 A 0 A_SpawnItemEx("PistolheavyplasmaTracerTrail12",(22*momx)/-35.0,-(22*momy)/-35.0,2+(22*momz)/-35.0,0,0,0,0,SXF_ABSOLUTEANGLE)
+		Loop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("DetectFloorCraterSmall")
+		TNT1 A 0 A_SpawnItemEx("DetectCeilCraterSmall")
+		TNT1 AAAAA 0 A_SpawnItemEx("BlueFlareSmall")
+//		TNT1 AAAAA 0 A_CustomMissile("BluePlasmaFireNonStatic",2,0,random(0,360),2,random(0,180))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile("BlueplasmaParticle",0,0,random(0,360),2,random(0,360))
+		BL1I ABCD 1 BRIGHT A_SpawnItemEx("BlueFlareSmall")
+		TNT2 AA 3 A_CustomMissile("PlasmaSmoke",1,0,random(0,360),2,random(0,160))
+		Stop
+	}
+}
+
+actor PistolheavyplasmaTracerTrail
+{
+Scale 0.2
+Alpha 0.9
+RenderStyle Add
++NOINTERACTION
++CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+		SPKB A 2 BRIGHT
+		stop
+	}
+}
+
+actor PistolheavyplasmaTracerTrail2 : PistolheavyplasmaTracerTrail	{Alpha 0.85}
+actor PistolheavyplasmaTracerTrail3 : PistolheavyplasmaTracerTrail	{Alpha 0.80}
+actor PistolheavyplasmaTracerTrail4 : PistolheavyplasmaTracerTrail	{Alpha 0.75}
+actor PistolheavyplasmaTracerTrail5 : PistolheavyplasmaTracerTrail	{Alpha 0.70}
+actor PistolheavyplasmaTracerTrail6 : PistolheavyplasmaTracerTrail	{Alpha 0.65}
+actor PistolheavyplasmaTracerTrail7 : PistolheavyplasmaTracerTrail	{Alpha 0.60}
+actor PistolheavyplasmaTracerTrail8 : PistolheavyplasmaTracerTrail	{Alpha 0.55}
+actor PistolheavyplasmaTracerTrail9 : PistolheavyplasmaTracerTrail	{Alpha 0.50}
+actor PistolheavyplasmaTracerTrail10 : PistolheavyplasmaTracerTrail	{Alpha 0.45}
+actor PistolheavyplasmaTracerTrail11 : PistolheavyplasmaTracerTrail	{Alpha 0.40}
+actor PistolheavyplasmaTracerTrail12 : PistolheavyplasmaTracerTrail	{Alpha 0.35}
+actor PistolheavyplasmaTracerTrail13 : PistolheavyplasmaTracerTrail	{Alpha 0.30}
+actor PistolheavyplasmaTracerTrail14 : PistolheavyplasmaTracerTrail	{Alpha 0.25}
+actor PistolheavyplasmaTracerTrail15 : PistolheavyplasmaTracerTrail	{Alpha 0.20}
+actor PistolheavyplasmaTracerTrail16 : PistolheavyplasmaTracerTrail	{Alpha 0.15}
+actor PistolheavyplasmaTracerTrail17 : PistolheavyplasmaTracerTrail	{Alpha 0.10}
+actor PistolheavyplasmaTracerTrail18 : PistolheavyplasmaTracerTrail	{Alpha 0.05}

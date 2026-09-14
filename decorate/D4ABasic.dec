@@ -162,7 +162,13 @@ Actor ExplosiveActivated : BurstFireActivated {}
 Actor SSGFastReload : WeaponUpgrade {}
 Actor SSGDoubleTrouble : WeaponUpgrade {}
 Actor SSGPreciseShot : WeaponUpgrade {}
-Actor SSGCounter : WeaponUpgrade { Inventory.MaxAmount 2 }
+
+Actor SSGCounter : Ammo
+{
+	Inventory.Amount 2
+	Inventory.MaxAmount 2
+	+UNDROPPABLE
+}
 
 Actor BurstFireCooldownActivator : PowerupGiver
 {

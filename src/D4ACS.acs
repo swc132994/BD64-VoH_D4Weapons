@@ -1,4 +1,3 @@
-#library "D4ACS"
 #include "zcommon.acs"
 
 #include "WeapFunc.acs"

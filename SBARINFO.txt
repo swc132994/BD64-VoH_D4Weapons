@@ -32,7 +32,8 @@ appendstatusbar fullscreen, forcescaled
 	{
 		InInventory Zoomed,1
 		{
-		drawbar "GAUSCOP2","GAUSCOP1", Ammo PreciseCharger,vertical,interpolate(15),96,72;
+		drawimage "GPSZOOM",160,90,center;
+		drawbar "GPSBAR2","GPSBAR1", Ammo PreciseCharger,vertical,interpolate(15),82,72;
 		}
 	}
 
