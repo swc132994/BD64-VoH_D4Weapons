@@ -14,86 +14,162 @@ Tag "$TAG_BFG9000"
 		D4W7 A -1
 		Stop
 	KickingFlash:
-		BF4G A 0
+		BFGI A 0
 		Goto KickingFrameFlash
 	SlideKickingStart:
-		BF4G A 0
+		BFGI A 0
 		Goto SlideKickingFrameStart
 	SlideKickingEnd:
-		BF4G A 0
+		BFGI A 0
 		Goto SlideKickingFrameEnd
 	v1Ready:
 	Ready:
-		BF4G A 1 A_WeaponReady
+		BFGI A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("IsUpgradingWeapons",1,"UpgradeWeapons")
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
-		TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"ChangeAltMode")
+		TNT1 A 0 A_JumpIfInventory("WeaponAltMode",1,"ChangeMode")
 		Loop
-	ChangeAltMode:
-		BF4G A 1
+	ChangeMode:
 		TNT1 A 0 A_TakeInventory("WeaponAltMode",1)
-		TNT1 A 0 A_JumpIfInventory("BFGUpgrade",1,1)
-		Goto NoUpgrades
-		BF4G A 1
-		TNT1 A 0 A_JumpIfInventory("BFGUpgrade",2,1)
-		Goto NoUpgrades2
-		BF4G A 1
-		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"ChangeAltMode2")
-		TNT1 A 0 A_GiveInventory("D4AltMode",1)
-		TNT1 A 0 A_PlaySound("D4BFG/ModeSwitch",CHAN_WEAPON)
-		TNT1 A 0 A_Print("Merciless Extermination Selected",2)
-		BF4F ABDEFGHIJKLMNMLKJIHGFEDBA 1 BRIGHT
+		TNT1 A 0 A_JumpIfInventory("ClassicBFG",1,"ClassicUpgradeCheck")
+		TNT1 A 0 A_JumpIfInventory("RapidFireBFG",1,"RapidFireUpgradeCheck")
+		TNT1 A 0 A_JumpIfInventory("ClassicMode",1,"GoToUpgrade")
+		TNT1 A 0 A_JumpIfInventory("RapidFireMode",1,1)
+		Goto AboutUpgrade
+	GoToUpgrade:
+		BFGI A 1 Offset(2, 37)
+		BFGI A 1 Offset(4, 42)
+		BFGI A 1 Offset(7, 47)
+		BFGI A 1 Offset(10, 52)
+		BFGI A 8
+		TNT1 A 0 A_JumpIfInventory("ClassicBFG",1,2)
+		TNT1 A 0 A_JumpIfInventory("ClassicMode",1,"ClassicUpgrade")
+	RapidFireUpgrade:
+		TNT1 A 0 A_Print("Rapid Fire Mode Selected",2)
+		BFGI A 1 Offset(13, 56)
+		BFGI A 0 A_JumpIfInventory("RapidFireBFG",1,"FromRapidToClassic")
+		BFGI A 1 Offset(16, 59)
+		BFGI A 3 Offset(19, 62) A_GiveInventory("RapidFireBFG",1)
+	FinishUpgrade:
+		BFGI A 1 Offset(16, 59)
+		BFGI A 1 Offset(13, 56)
+		BFGI A 1 Offset(11, 53)
+		BFGI A 1 Offset(7, 47)
+		BFGI A 1 Offset(4, 42)
+		BFGI A 1 Offset(2, 37)
 		Goto Ready
-	ChangeAltMode2:
-		BF4G A 1
-		TNT1 A 0 A_TakeInventory("D4AltMode",1)
-		TNT1 A 0 A_PlaySound("D4BFG/ModeSwitch",CHAN_WEAPON)
-		TNT1 A 0 A_Print("Purge Bolt Selected",2)
-		BF4F ABDEFGHIJKLMNMLKJIHGFEDBA 1 BRIGHT
-		Goto Ready
+	FromRapidToClassic:
+		BFGI A 1 Offset(16, 59) A_TakeInventory("RapidFireBFG",1)
+		BFGI A 3 Offset(19, 62) A_GiveInventory("ClassicBFG",1)
+		Goto FinishUpgrade
+	ClassicUpgradeCheck:
+		TNT1 A 0 A_JumpIfInventory("ClassicMode",1,"GoToUpgrade")
+		Goto OneUpgradeOnly
+	RapidFireUpgradeCheck:
+		TNT1 A 0 A_JumpIfInventory("RapidFireMode",1,"GoToUpgrade")
+		Goto OneUpgradeOnly
+	ClassicUpgrade:
+		TNT1 A 0 A_Print("Classic Mode Selected",2)
+		BFGI A 1 Offset(13, 56)
+		BFGI A 0 A_JumpIfInventory("ClassicBFG",1,"FromClassicToRapid")
+		BFGI A 1 Offset(16, 59)
+		BFGI A 3 Offset(19, 62) A_GiveInventory("ClassicBFG",1)
+		Goto FinishUpgrade
+	FromClassicToRapid:
+		BFGI A 1 Offset(16, 59) A_TakeInventory("ClassicBFG",1)
+		BFGI A 3 Offset(19, 62) A_GiveInventory("RapidFireBFG",1)
+		Goto FinishUpgrade
 	Deselect:
 		TNT1 A 0 A_TakeInventory("IsD4Weapon",0)
 		TNT1 A 0 A_TakeInventory("D4BFGSelected",0)
-		TNT1 A 0 A_TakeInventory("D4AltMode",0)
-		BF4G A 0
+		BFGI A 0
 		Goto DeselectAnimation
 	Select:
 		TNT1 A 0 A_GiveInventory("D4BFGSelected",1)
 		TNT1 A 0 A_GiveInventory("IsD4Weapon",1)
-		BF4G A 0
+		BFGI A 0
 		Goto SelectAnimation
 	Fire:
 		TNT1 A 0 A_PlaySound("D4BFG/Charge",0)
 		BF4C A 0 BRIGHT A_PlaySound("D4BFG/ChargeLoop",6,1,1)
-		BF4F ABCDEFGHIJKLM 1 BRIGHT
-		BF4C ABCDABCDABCDABCDABCDABCD 1 BRIGHT
+		BFGD A 1 Bright A_ZoomFactor(1.000,ZOOM_NOSCALETURNING)
+		BFGD A 1 Bright A_ZoomFactor(0.998,ZOOM_NOSCALETURNING)
+		BFGD B 1 Bright A_ZoomFactor(0.996,ZOOM_NOSCALETURNING)
+		BFGD B 1 Bright A_ZoomFactor(0.994,ZOOM_NOSCALETURNING)
+		BFGE A 1 Bright A_ZoomFactor(0.990,ZOOM_NOSCALETURNING)
+		BFGE A 1 Bright A_ZoomFactor(0.986,ZOOM_NOSCALETURNING)
+		BFGE B 1 Bright A_ZoomFactor(0.981,ZOOM_NOSCALETURNING)
+		BFGE B 1 Bright A_ZoomFactor(0.975,ZOOM_NOSCALETURNING)
+		BFGE C 1 Bright A_ZoomFactor(0.969,ZOOM_NOSCALETURNING)
+		BFGE C 1 Bright A_ZoomFactor(0.961,ZOOM_NOSCALETURNING)
+		BFGE D 1 Bright A_ZoomFactor(0.953,ZOOM_NOSCALETURNING)
+		BFGE D 1 Bright A_ZoomFactor(0.944,ZOOM_NOSCALETURNING)
+		BFGE E 1 Bright A_ZoomFactor(0.935,ZOOM_NOSCALETURNING)
+		BFGE E 1 Bright A_ZoomFactor(0.925,ZOOM_NOSCALETURNING)
+		BFGE F 1 Bright A_ZoomFactor(0.914,ZOOM_NOSCALETURNING)
+		BFGE F 1 Bright A_ZoomFactor(0.902,ZOOM_NOSCALETURNING)
+		BFGE G 1 Bright A_ZoomFactor(0.889,ZOOM_NOSCALETURNING)
+		BFGE G 1 Bright A_ZoomFactor(0.876,ZOOM_NOSCALETURNING)
+		BFGE H 1 Bright A_ZoomFactor(0.863,ZOOM_NOSCALETURNING)
+		BFGE I 1 Bright A_ZoomFactor(0.833,ZOOM_NOSCALETURNING)
+		BFGE J 1 Bright A_ZoomFactor(0.801,ZOOM_NOSCALETURNING)
+		BFGE K 1 Bright A_ZoomFactor(0.766,ZOOM_NOSCALETURNING)
+		BFGE L 1 Bright offset(2,37) A_ZoomFactor(0.729,ZOOM_NOSCALETURNING)
+		BFGE L 1 Bright offset(4,42) A_ZoomFactor(0.710,ZOOM_NOSCALETURNING)
 		TNT1 A 0 A_StopSound(6)
 		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,22)
+		TNT1 A 0 A_ZoomFactor(1,ZOOM_NOSCALETURNING)
 		TNT1 A 0 A_PlaySound("D4BFG/Fire",1)
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("64BFGBallDeathSound",0,1,6,-3,0,0)
-		BF4F M 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		BF4F NOPQ 1 BRIGHT A_SetAngle(random(1,-1) + angle)
-		BF4G A 6
-		TNT1 A 0 A_Refire
-		BF4G A 6 A_WeaponReady(1)
+	FireAnimation:
+		BFGF A 1 Bright offset(7,47)
+		BFGF A 1 Bright offset(10,52)
+		BFGF B 2 Bright
+		BFGF CC 1 Bright A_SetPitch(pitch+0.5)
+		BFGF DD 1 Bright offset(9,50) A_SetPitch(pitch+0.5)
+		BFGF EE 1 Bright offset(8,48) A_SetPitch(pitch+0.5)
+		BFGF FF 1 Bright offset(7,46) A_SetPitch(pitch+0.5)
+		BFGG AA 1 Bright offset(6,44) A_SetPitch(pitch+0.5)
+		BFGG BB 2 Bright offset(5,42) A_SetPitch(pitch+0.5)
+		BFGG C 2 Bright offset(4,40) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG C 2 Bright offset(3,38) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG D 2 Bright offset(2,36) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG E 2 Bright offset(1,32) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG F 2 Bright A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGI A 6 A_WeaponReady(1)
 		Goto Ready
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory("BFGUpgrade",1,1)
-		Goto NoUpgrades
-		TNT1 A 0 A_JumpIfInventory("D4AltMode",1,"AltFire2")
+		TNT1 A 0 A_JumpIfInventory("RapidFireBFG",1,"RapidFire")
+		TNT1 A 0 A_JumpIfInventory("ClassicBFG",1,"ClassicFire")
+		Goto AboutUpgrade
+	RapidFire:
 		TNT1 A 0 A_JumpIfInventory("Cell",10,1)
 		Goto NoAmmo
-		BF4F A 0 BRIGHT A_PlaySound("D4BFG/MiniCharge",7)
-		BF4F ABCDEFGHIJKLM 1 BRIGHT
-		BF4C ABCD 1 BRIGHT
+		TNT1 A 0 BRIGHT A_PlaySound("D4BFG/MiniCharge",7)
+		BFGD A 1 Bright A_ZoomFactor(0.998,ZOOM_NOSCALETURNING)
+		BFGD B 1 Bright A_ZoomFactor(0.994,ZOOM_NOSCALETURNING)
+		BFGE A 1 Bright A_ZoomFactor(0.986,ZOOM_NOSCALETURNING)
+		BFGE B 1 Bright A_ZoomFactor(0.975,ZOOM_NOSCALETURNING)
+		BFGE C 1 Bright A_ZoomFactor(0.961,ZOOM_NOSCALETURNING)
+		BFGE D 1 Bright A_ZoomFactor(0.944,ZOOM_NOSCALETURNING)
+		BFGE E 1 Bright A_ZoomFactor(0.925,ZOOM_NOSCALETURNING)
+		BFGE F 1 Bright A_ZoomFactor(0.902,ZOOM_NOSCALETURNING)
+		BFGE G 1 Bright A_ZoomFactor(0.876,ZOOM_NOSCALETURNING)
+		BFGE H 1 Bright A_ZoomFactor(0.863,ZOOM_NOSCALETURNING)
+		BFGE I 1 Bright A_ZoomFactor(0.833,ZOOM_NOSCALETURNING)
+		BFGE J 1 Bright A_ZoomFactor(0.801,ZOOM_NOSCALETURNING)
+		BFGE K 1 Bright A_ZoomFactor(0.766,ZOOM_NOSCALETURNING)
+		BFGE L 1 Bright offset(4,42) A_ZoomFactor(0.710,ZOOM_NOSCALETURNING)
 	AltHold:
 		TNT1 A 0 A_JumpIfInventory("Cell",10,"ActualAltHold")
 		Goto NoAmmo
 	ActualAltHold:
+		TNT1 A 0 A_ZoomFactor(1,ZOOM_NOSCALETURNING)
+		TNT1 A 0 A_SetPitch(pitch-6.0)
 		TNT1 A 0 A_TakeInventory("Cell",10)
 		TNT1 A 0 A_PlaySound("D4BFG/MiniFire",1)
 		TNT1 A 0 A_AlertMonsters
@@ -102,51 +178,65 @@ Tag "$TAG_BFG9000"
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,22)
-		BF4F M 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		BF4F NOPQ 1 BRIGHT A_SetAngle(random(1,-1) + angle)
-		BF4G A 6
+		BFGF A 1 Bright offset(7,47)
+		BFGF A 1 Bright offset(10,52)
+		BFGF B 2 Bright 
+		BFGF CC 1 Bright A_SetPitch(pitch+0.5)
+		BFGF DD 1 Bright offset(9,50) A_SetPitch(pitch+0.5)
+		BFGF EE 1 Bright offset(8,48) A_SetPitch(pitch+0.5)
+		BFGF FF 1 Bright offset(7,46) A_SetPitch(pitch+0.5)
+		"####" "#" 0 A_Refire("2degrees2refire")
+		BFGG AA 1 Bright offset(6,44) A_SetPitch(pitch+0.5)
+		"####" "#" 0 A_Refire("1degree2refire")
+		BFGG BB 2 Bright offset(5,42) A_SetPitch(pitch+0.5)
+		"####" "#" 0 A_Refire("VolleyRefire")
+		BFGG C 2 Bright offset(4,40) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG C 2 Bright offset(3,38) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG D 2 Bright offset(2,36) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG E 2 Bright offset(1,32) A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
+		BFGG F 2 Bright A_WeaponReady(WRF_NOFIRE|WRF_NOBOB|WRF_ALLOWZOOM)
 		TNT1 A 0 A_Refire
-		BF4G A 6 A_WeaponReady(1)
+		BFGI A 6 A_WeaponReady(1)
 		Goto Ready
-	AltFire2:
+	"2degrees2refire":
+		"####" "#" 0 A_SetPitch(pitch+2.0)
+		Goto VolleyRefire
+	"1degree2refire":
+		"####" "#" 0 A_SetPitch(pitch+1.0)
+		Goto VolleyRefire
+	VolleyRefire:
+		Goto ActualAltHold
+	ClassicFire:
 		TNT1 A 0 A_JumpIfInventory("Cell",100,1)
 		Goto NoAmmo
 		TNT1 A 0 A_PlaySound("D4BFG/Charge2",0)
 		BF4C A 0 BRIGHT A_PlaySound("D4BFG/ChargeLoop2",6,1,1)
-		BF4F ABCDEFGHIJKLM 1 BRIGHT
-		BF4C ABCDABCDABCDABCDABCDABCD 1 BRIGHT
+		BFGD A 2 Bright A_ZoomFactor(0.998,ZOOM_NOSCALETURNING)
+		BFGD B 2 Bright A_ZoomFactor(0.994,ZOOM_NOSCALETURNING)
+		BFGE A 2 Bright A_ZoomFactor(0.986,ZOOM_NOSCALETURNING)
+		BFGE B 2 Bright A_ZoomFactor(0.975,ZOOM_NOSCALETURNING)
+		BFGE C 2 Bright A_ZoomFactor(0.961,ZOOM_NOSCALETURNING)
+		BFGE D 2 Bright A_ZoomFactor(0.944,ZOOM_NOSCALETURNING)
+		BFGE E 2 Bright A_ZoomFactor(0.925,ZOOM_NOSCALETURNING)
+		BFGE F 2 Bright A_ZoomFactor(0.902,ZOOM_NOSCALETURNING)
+		BFGE G 2 Bright A_ZoomFactor(0.876,ZOOM_NOSCALETURNING)
+		BFGE H 2 Bright A_ZoomFactor(0.863,ZOOM_NOSCALETURNING)
+		BFGE I 2 Bright A_ZoomFactor(0.833,ZOOM_NOSCALETURNING)
+		BFGE J 2 Bright A_ZoomFactor(0.801,ZOOM_NOSCALETURNING)
+		BFGE K 2 Bright A_ZoomFactor(0.766,ZOOM_NOSCALETURNING)
+		BFGE L 2 Bright offset(4,42) A_ZoomFactor(0.710,ZOOM_NOSCALETURNING)
 		TNT1 A 0 A_StopSound(6)
 		TNT1 A 0 A_JumpIfInventory("IsCrouching",1,3)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,40)
 		TNT1 A 0 A_Jump(256,2)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle5",20,5,22)
 		TNT1 A 0 A_PlaySound("D4BFG/Fire2",1)
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("64BFGBallHuge",0,1,6,-3,0,0)
+		TNT1 A 0 A_ZoomFactor(1,ZOOM_NOSCALETURNING)
+		TNT1 A 0 A_SetPitch(pitch-8.0)
 		TNT1 A 0 A_TakeInventory("Cell",100)
-		BF4F M 1 BRIGHT A_SetAngle(random(4,-4) + angle)
-		BF4F NOPQ 1 BRIGHT A_SetAngle(random(1,-1) + angle)
-		BF4G A 6
-		TNT1 A 0 A_Refire
-		BF4G A 6 A_WeaponReady(1)
-		Goto Ready
-	NoUpgrades:
-		TNT1 A 0 A_Print("You have no upgrades for this weapon",2)
-		Goto Ready
-	NoUpgrades2:
-		TNT1 A 0 A_Print("You don't have a level 2 upgrade for this weapon",2)
-		Goto Ready
-	NoAmmo:
-		TNT1 A 0 A_Print("You don't have enough ammo to use this weapon's alt fire",2)
-		Goto Ready
-	UpgradeWeapons:
-		TNT1 A 0 A_TakeInventory("IsUpgradingWeapons",1)
-		TNT1 A 0 SetPlayerProperty(0,1,4)
-		PK4P ABCDEFGH 2
-		TNT1 A 6
-		TNT1 A 0 A_PlaySound("UACBot/Pickup")
-		TNT1 A 0 SetPlayerProperty(0,0,4)
-		TNT1 A 12
-		Goto Select
+		Goto FireAnimation
 	}
 }
 
